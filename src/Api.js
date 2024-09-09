@@ -6,6 +6,10 @@ const Api = {
     const response = await fetch(url + "recipes");
     return response.json();
   },
+  getMyJobsList: async () => {
+    const response = await fetch(url + "myjobs");
+    return response.json();
+  },
 };
 
 export default Api;

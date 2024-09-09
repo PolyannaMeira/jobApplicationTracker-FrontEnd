@@ -1,0 +1,18 @@
+.jobList{
+    list-style: none;
+    
+}
+
+.jobItem {
+    display: flex;
+    flex-direction: column;
+}
+
+.companyName{
+    font-size: 17px;
+    font-weight: bold;
+}
+
+a:link{
+    text-decoration: none;
+}
