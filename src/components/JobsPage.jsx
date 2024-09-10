@@ -1,14 +1,20 @@
 import './JobsPage.css'
 import Api from '../Api'
 import { useEffect, useState } from 'react';
+import Filter from './Filter/Filter';
 
 const JobsPage = () => {
   const [myJobs, setMyJobs] = useState([])
+  const [selectedFilter, setSelectedFilter] = useState('');
+
   useEffect(()=> {
     Api.getMyJobsList().then((data) => setMyJobs(data))
   }, [])
   return (
     <>
+
+    <Filter selectedFilter={selectedFilter} onFilterChange={setSelectedFilter} />
+
     <div>
       <ul className='jobList'>
         {
