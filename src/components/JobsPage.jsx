@@ -1,41 +1,52 @@
-import './JobsPage.css'
-import Api from '../Api'
+import './JobsPage.css';
+import Api from '../Api';
 import { useEffect, useState } from 'react';
 import Filter from './Filter/Filter';
+import Sort from './Sort/Sort';
 
 const JobsPage = () => {
-  const [myJobs, setMyJobs] = useState([])
+  const [myJobs, setMyJobs] = useState([]);
   const [selectedFilter, setSelectedFilter] = useState('');
+  const [sortOrder, setSortOrder] = useState(null);
 
-  useEffect(()=> {
-    Api.getMyJobsList().then((data) => setMyJobs(data))
-  }, [])
+  useEffect(() => {
+    Api.getMyJobsList().then((data) => setMyJobs(data));
+  }, []);
+
+  useEffect(() => {
+    if (sortOrder) {
+      const sortedJobs = [...myJobs].sort((a, b) => {
+        return sortOrder === 'Ascending'
+          ? a.companyName.localeCompare(b.companyName)
+          : b.companyName.localeCompare(a.companyName);
+      });
+      setMyJobs(sortedJobs);
+    }
+  }, [sortOrder, myJobs]);
+
+  const handleSortChange = (order) => {
+    setSortOrder(order);
+  };
+
   return (
     <>
-
-    <Filter selectedFilter={selectedFilter} onFilterChange={setSelectedFilter} />
-
-    <div>
-      <ul className='jobList'>
-        {
-          myJobs.map(j => (
+      <Sort onSortChange={handleSortChange} />
+      <Filter selectedFilter={selectedFilter} onFilterChange={setSelectedFilter} />
+      <div>
+        <ul className='jobList'>
+          {myJobs.map((j) => (
             <li className='jobItem' key={j.id}>
-              <span className='companyName'>
-                {j.companyName}
-              </span> 
-            <span>
-            {j.jobTitle} 
-            </span>
-            <span className='jobLink'>
-              <a href={j.link}>Go to application page</a>
+              <span className='companyName'>{j.companyName}</span>
+              <span>{j.jobTitle}</span>
+              <span className='jobLink'>
+                <a href={j.link}>Go to application page</a>
               </span>
-              </li>
-          ))
-        }
-      </ul>
-    </div>
+            </li>
+          ))}
+        </ul>
+      </div>
     </>
-  )
-}
+  );
+};
 
-export default JobsPage
+export default JobsPage;
