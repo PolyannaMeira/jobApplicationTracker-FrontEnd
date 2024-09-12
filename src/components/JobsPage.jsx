@@ -3,11 +3,21 @@ import Api from '../Api';
 import { useEffect, useState } from 'react';
 import Filter from './Filter/Filter';
 import Sort from './Sort/Sort';
+import Search from './Search/Search';
 
+const jobsList = [
+  'Meta',
+  'Apple',
+  'Tesla',
+  'Microsoft',
+  'Nvidia',
+  // Add more job titles here
+];
 const JobsPage = () => {
   const [myJobs, setMyJobs] = useState([]);
   const [selectedFilter, setSelectedFilter] = useState('');
   const [sortOrder, setSortOrder] = useState(null);
+
 
   useEffect(() => {
     Api.getMyJobsList().then((data) => setMyJobs(data));
@@ -45,6 +55,10 @@ const JobsPage = () => {
           ))}
         </ul>
       </div>
+      <div>
+      <h2>Jobs</h2>
+      <Search data={jobsList} />
+    </div>
     </>
   );
 };
