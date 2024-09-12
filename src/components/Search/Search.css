@@ -1,0 +1,23 @@
+.search-container {
+    width: 100%;
+    max-width: 500px;
+    margin: 20px auto;
+  }
+  
+  .search-input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  .search-results {
+    margin-top: 10px;
+  }
+  
+  .search-item {
+    padding: 5px 0;
+    border-bottom: 1px solid #eee;
+  }
+  
