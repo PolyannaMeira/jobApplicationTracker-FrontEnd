@@ -4,7 +4,8 @@ import { useEffect, useState } from 'react';
 import Filter from './Filter/Filter';
 import Sort from './Sort/Sort';
 import Search from './Search/Search';
-import HamburgerButton from './Navigation/Navigation';
+import HamburgerButton from './HamburgerButton/HamburgerButton';
+import PlusButton from './PlusButton/PlusButton';
 
 
 const jobsList = [
@@ -45,6 +46,8 @@ const JobsPage = () => {
       <HamburgerButton/>
       <Sort onSortChange={handleSortChange} />
       <Filter selectedFilter={selectedFilter} onFilterChange={setSelectedFilter} />
+      <h2>Jobs</h2>
+      <Search data={jobsList} />
       <div>
         <ul className='jobList'>
           {myJobs.map((j) => (
@@ -57,10 +60,10 @@ const JobsPage = () => {
             </li>
           ))}
         </ul>
+        <PlusButton/>
       </div>
       <div>
-      <h2>Jobs</h2>
-      <Search data={jobsList} />
+      
     </div>
     </>
   );

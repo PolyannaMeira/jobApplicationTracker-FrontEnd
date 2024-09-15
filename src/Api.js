@@ -8,8 +8,10 @@ const Api = {
   },
   getMyJobsDetails: async (id) => {
     const response = await fetch(url + `jobs/:${id}`);
+
     return response.json();
   },
+
 };
 
 export default Api;
