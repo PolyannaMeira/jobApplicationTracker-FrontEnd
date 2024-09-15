@@ -2,18 +2,16 @@
 const url = "http://localhost:5000/";
 
 const Api = {
-  getRecipes: async () => {
-    const response = await fetch(url + "recipes");
-    return response.json();
-  },
   getMyJobsList: async () => {
     const response = await fetch(url + "jobs");
     return response.json();
   },
   getMyJobsDetails: async (id) => {
     const response = await fetch(url + `jobs/:${id}`);
-    return response.json()
-  }
+
+    return response.json();
+  },
+
 };
 
 export default Api;
