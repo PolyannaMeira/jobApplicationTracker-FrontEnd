@@ -7,11 +7,11 @@ const Api = {
     return response.json();
   },
   getMyJobsList: async () => {
-    const response = await fetch(url + "myjobs");
+    const response = await fetch(url + "jobs");
     return response.json();
   },
   getMyJobsDetails: async (id) => {
-    const response = await fetch(url + `myjobs/:${id}`);
+    const response = await fetch(url + `jobs/:${id}`);
     return response.json()
   }
 };

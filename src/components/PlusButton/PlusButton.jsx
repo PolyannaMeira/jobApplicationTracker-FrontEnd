@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { handleClick } from "react";
 import "./Button.css";
 
-function AddButton() {
+function PlusButton() {
   return (
     <button className="add-button" onClick={handleClick}>
       +
@@ -9,4 +9,4 @@ function AddButton() {
   );
 }
 
-export default AddButton;
+export default PlusButton;
