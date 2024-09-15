@@ -17,49 +17,12 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="./styles.css" />
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Job Application Tracker</title>
   </head>
   <body>
-    <div id="root">
-      <div class="container">
-        <h1>Job Tracker</h1>
-        <div class="job-form">
-          <input
-            type="text"
-            id="companyName"
-            placeholder="Company Name"
-            required
-          />
-          <input type="text" id="position" placeholder="Position" required />
-          <input type="date" id="dateApplied" required />
-          <select id="status" required>
-            <option value="Applied">Applied</option>
-            <option value="Interview">Interview</option>
-            <option value="Offered">Offered</option>
-            <option value="Rejected">Rejected</option>
-          </select>
-          <textarea id="notes" placeholder="Notes"></textarea>
-          <button id="addJobBtn">Add Job</button>
-        </div>
-        <table id="jobTable">
-          <thead>
-            <tr>
-              <th>Company Name</th>
-              <th>Position</th>
-              <th>Date Applied</th>
-              <th>Status</th>
-              <th>Notes</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            <!-- Jobs will be dynamically added here -->
-          </tbody>
-        </table>
-      </div>
-
-      <script src="script.js"></script>
-    </div>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
