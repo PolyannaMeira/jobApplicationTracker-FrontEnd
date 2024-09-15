@@ -4,6 +4,8 @@ import { useEffect, useState } from 'react';
 import Filter from './Filter/Filter';
 import Sort from './Sort/Sort';
 import Search from './Search/Search';
+import HamburgerButton from './Navigation/Navigation';
+
 
 const jobsList = [
   'Meta',
@@ -40,6 +42,7 @@ const JobsPage = () => {
 
   return (
     <>
+      <HamburgerButton/>
       <Sort onSortChange={handleSortChange} />
       <Filter selectedFilter={selectedFilter} onFilterChange={setSelectedFilter} />
       <div>

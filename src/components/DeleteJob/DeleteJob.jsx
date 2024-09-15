@@ -1,7 +1,7 @@
 import './DeleteJobs.css';
 import PropTypes from 'prop-types'
 
-const DeleteJob = ({job_id}) => {
+const DeleteJob = () => {
   return (
     <div className='delete-container'>
         <div>Are you sure you want to delete this job ? This action cannot be undone.</div>
