@@ -63,7 +63,6 @@ const JobsPage = () => {
         <PlusButton/>
       </div>
       <div>
-      
     </div>
     </>
   );
