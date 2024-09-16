@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./Navigation.css";
+import './HamburgerButton.css'
 
 const HamburgerButton = () => {
   const [isOpen, setIsOpen] = useState(false);
