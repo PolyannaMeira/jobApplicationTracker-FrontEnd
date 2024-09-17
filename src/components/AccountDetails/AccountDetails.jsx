@@ -1,8 +1,9 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./AccountDetails.css";
 
 const AccountDetails = () => {
-  // State para gerenciar os inputs do formulário
+  
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -10,18 +11,43 @@ const AccountDetails = () => {
     password: ""
   });
 
-  // Função para lidar com mudanças nos inputs
+  const navigate = useNavigate(); // Hook for navigation
+
+  
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  // Função de atualização do formulário (exemplo de lógica)
+  
   const handleUpdate = (e) => {
     e.preventDefault();
     console.log("Updated Account Details:", formData);
-    // Lógica de atualização vai aqui
-  };
+    
+    /*try {
+        const response = await fetch(`http://localhost:5000/api/account-details/${userId}`, {
+          method: 'PUT', 
+          headers: {
+            'Content-Type': 'application/json', 
+          },
+          body: JSON.stringify(formData), 
+        });
+    
+        if (response.ok) {
+          const data = await response.json();
+          console.log('Account details updated:', data);
+          
+          navigate("/myjobs");
+        } else {
+          console.error('Failed to update account details');
+        }
+      } catch (error) {
+        console.error('An error occurred while updating account details:', error);
+      }
+    };*/
+    navigate("/myjobs"); 
+  };    
+  
 
   // Função de cancelamento
   const handleCancel = () => {
@@ -31,6 +57,7 @@ const AccountDetails = () => {
       email: "",
       password: ""
     });
+    navigate("/myjobs");
   };
 
   return (
