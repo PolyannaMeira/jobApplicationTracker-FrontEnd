@@ -33,13 +33,14 @@
 .nav-menu {
   position: absolute;
   top: 50px;
-  right: 20px;
+  right: 100px;
   background-color: #fff;
   border: 1px solid #ddd;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 10px;
   width: 200px;
   border-radius: 8px;
+  z-index:1000
 }
 
 .nav-menu ul {
