@@ -4,7 +4,7 @@ import './Sort.css';
 
 const Sort = () => {
   const [isSortMenuOpen, setIsSortMenuOpen] = useState(false);
-  const [sortCriteria, setSortCriteria] = useState('Company Name'); // Default criteria
+  const [sortCriteria, setSortCriteria] = useState('Sort');
 
   const sortToggleHandler = () => {
     setIsSortMenuOpen(!isSortMenuOpen);
@@ -26,15 +26,15 @@ const Sort = () => {
     <div className='sort-container'>
       <button className='sort-button' onClick={sortToggleHandler}>
       <img width="23" height="23" src="https://img.icons8.com/ios-filled/50/sorting-arrows.png" alt="sorting-arrows"/>
-        Sort <span className="arrow">▼</span>
+        {sortCriteria}<span className="arrow">▼</span>
       </button>
       {isSortMenuOpen && (
           <ul className="sort-menu">
             <li onClick={() => selectSortHandler('Company Name')}>
               {getCheckMark('Company Name', 'criteria')} Company Name
             </li>
-            <li>
-              {getCheckMark('Interview Date', 'criteria')} Interview Date (Not implemented)
+            <li onClick={() => selectSortHandler('Interview Date')}>
+              {getCheckMark('Interview Date', 'criteria')} Interview Date
             </li>
           </ul>
       )}

@@ -18,7 +18,24 @@ const JobsPage = () => {
   useEffect(() => {
     Api.getMyJobsList().then((data) => setMyJobs(data));
   }, []);
+  
+  const getDayWithSuffix = (day) => {
+    if (day > 3 && day < 21) return day + 'th'; // covers 11th to 20th
+    switch (day % 10) {
+      case 1: return day + 'st';
+      case 2: return day + 'nd';
+      case 3: return day + 'rd';
+      default: return day + 'th';
+    }
+  };
 
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const day = getDayWithSuffix(date.getDate());
+    const month = date.toLocaleString('default', { month: 'short' });
+    const year = date.getFullYear();
+    return `${day} ${month} ${year}`;
+  };
 
   return (
     <>
@@ -36,6 +53,11 @@ const JobsPage = () => {
               <span className='jobLink'>
                 <a href={j.link}>Go to application page</a>
               </span>
+              {j.interviewDate ? (
+                <span className='interviewDate'>interview on {formatDate(j.interviewDate)}</span>
+              ) : (
+                <span>interview not scheduled</span>
+              )}
             </li>
           ))}
         </ul>
