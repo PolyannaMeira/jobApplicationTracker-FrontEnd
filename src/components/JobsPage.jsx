@@ -13,33 +13,18 @@ const jobsList = [];
 const JobsPage = () => {
   const [myJobs, setMyJobs] = useState([]);
   const [selectedFilter, setSelectedFilter] = useState('');
-  const [sortOrder, setSortOrder] = useState(null);
 
 
   useEffect(() => {
     Api.getMyJobsList().then((data) => setMyJobs(data));
   }, []);
 
-  useEffect(() => {
-    if (sortOrder) {
-      const sortedJobs = [...myJobs].sort((a, b) => {
-        return sortOrder === 'Ascending'
-          ? a.companyName.localeCompare(b.companyName)
-          : b.companyName.localeCompare(a.companyName);
-      });
-      setMyJobs(sortedJobs);
-    }
-  }, [sortOrder, myJobs]);
-
-  const handleSortChange = (order) => {
-    setSortOrder(order);
-  };
 
   return (
     <>
       <Navbar/>
       <Search data={jobsList} />
-      <Sort onSortChange={handleSortChange} />
+      <Sort />
       <Filter selectedFilter={selectedFilter} onFilterChange={setSelectedFilter} />
       <h2>Jobs</h2>
       <div>
