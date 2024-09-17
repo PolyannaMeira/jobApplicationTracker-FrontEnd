@@ -17,6 +17,7 @@ const Filter= () => {
   return (
     <div className="filter-container">
       <button className="filter-button" onClick={toggleMenu}>
+        <span className="filterImg"><img width="23" height="23" src="https://img.icons8.com/windows/32/filter.png" alt="filter"/></span>
         <span>{selectedFilter}</span> <span className="arrow">▼</span>
       </button>
       {isMenuOpen && (
