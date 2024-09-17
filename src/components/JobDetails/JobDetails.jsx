@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import Api from "./../../Api";
+import Api from "../../Api";
 import "./JobDetails.css";
+import NavBar from "../NavBar/NavBar"
 
 const JobDetails = () => {
   const { id } = useParams(); // Get the job ID from the URL
@@ -37,7 +38,9 @@ const JobDetails = () => {
 
   // Display job details if data is fetched successfully
   return (
+      
     <div className="job-details">
+      <NavBar/>
       <h2 className="title">Job Details</h2>
       <div className="job-details-container">
       <p ><strong>Company Name:</strong> {job.companyName}</p>
