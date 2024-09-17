@@ -1,16 +1,17 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom"; 
 import "./User.css"; 
 
 function User() {
   const [open, setOpen] = useState(false);
+  const navigate = useNavigate(); //Hook for navigation
 
   const handleToggle = () => {
     setOpen(!open);
   };
 
   const handleAccountDetails = () => {
-    console.log("Account Details clicked");
-    // lógica para navegar para a página de detalhes da conta aqui.
+    navigate("/account-details");
   };
 
   const handleLogout = () => {
