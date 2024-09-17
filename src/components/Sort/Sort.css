@@ -1,8 +1,9 @@
   .sort-container {
       position: relative;
-      display: flex;
+      display: block;
+      float: left;
       justify-content: center;
-      width: 100%;
+      width: 50%;
       margin: 20px 0;
     }
 

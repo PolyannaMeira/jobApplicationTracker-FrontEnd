@@ -1,8 +1,9 @@
 .filter-container {
   position: relative;
-  display: flex;
-  justify-content: center;
-  width: 100%;
+  display: block;
+  float: right;
+  justify-content: center;  
+  width: 50%;
   margin: 20px 0;
   
 }
@@ -26,6 +27,7 @@
 .filter-button:hover {
   background-color: #969799;
 }
+
 
 .arrow {
   margin-left: 8px;
@@ -63,10 +65,3 @@
   background-color: #e2e2e2;
 }
 
-/* Media Query para Responsividade */
-@media (max-width: 480px) {
-  .filter-button {
-    font-size: 14px;
-    padding: 10px 15px;
-  }
-}

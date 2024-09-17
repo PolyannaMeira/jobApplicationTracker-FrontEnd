@@ -17,13 +17,14 @@ const Search = ({ data }) => {
 
   return (
     <div className="search-container">
-      <input
+      <input 
         type="text"
         placeholder="Search..."
         value={searchQuery}
         onChange={handleInputChange}
         className="search-input"
       />
+      
       <div className="search-results">
         {filteredData.map((item, index) => (
           <div key={index} className="search-item">
@@ -31,6 +32,7 @@ const Search = ({ data }) => {
           </div>
         ))}
       </div>
+      
     </div>
   );
 };

@@ -34,6 +34,7 @@ const Sort = ({ onSortChange }) => {
   return (
     <div className='sort-container'>
       <button className='sort-button' onClick={sortToggleHandler}>
+      <img width="23" height="23" src="https://img.icons8.com/ios-filled/50/sorting-arrows.png" alt="sorting-arrows"/>
         Sort <span className="arrow">▼</span>
       </button>
       {isSortMenuOpen && (

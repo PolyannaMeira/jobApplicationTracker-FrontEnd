@@ -17,7 +17,7 @@ const HamburgerButton = () => {
         <div className="hamburger-line line1"></div>
         <div className="hamburger-line line2"></div>
         <div className="hamburger-line line3"></div>
-      </button>
+      </button> 
 
       {isOpen && (
         <nav className="nav-menu">
