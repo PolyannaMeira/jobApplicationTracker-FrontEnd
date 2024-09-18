@@ -43,8 +43,8 @@ const JobsPage = () => {
       <Search data={jobsList} />
       <Sort />
       <Filter selectedFilter={selectedFilter} onFilterChange={setSelectedFilter} />
-      <h2>Jobs</h2>
-      <div>
+
+      <>
         <ul className='jobList'>
           {myJobs.map((j) => (
             <li className='jobItem' key={j.id}>
@@ -62,9 +62,7 @@ const JobsPage = () => {
           ))}
         </ul>
         <PlusButton/>
-      </div>
-      <div>
-    </div>
+      </>
     </>
   );
 };
