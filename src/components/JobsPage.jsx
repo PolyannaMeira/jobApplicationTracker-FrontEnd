@@ -6,6 +6,7 @@ import Sort from './Sort/Sort';
 import Search from './Search/Search';
 import PlusButton from './PlusButton/PlusButton';
 import Navbar from './NavBar/NavBar';
+import { useNavigate } from 'react-router-dom';
 
 
 const jobsList = [];
@@ -13,12 +14,16 @@ const jobsList = [];
 const JobsPage = () => {
   const [myJobs, setMyJobs] = useState([]);
   const [selectedFilter, setSelectedFilter] = useState('');
-
+const navigate = useNavigate()
 
   useEffect(() => {
     Api.getMyJobsList().then((data) => setMyJobs(data));
   }, []);
   
+  const transferHandler = (data) => {
+    navigate(`/myjob/${data}`, { replace: true });
+  }
+
   const getDayWithSuffix = (day) => {
     if (day > 3 && day < 21) return day + 'th'; // covers 11th to 20th
     switch (day % 10) {
@@ -51,7 +56,7 @@ const JobsPage = () => {
               <span className='companyName'>{j.companyName}</span>
               <span>{j.jobTitle}</span>
               <span className='jobLink'>
-                <a href={j.link}>Go to application page</a>
+                <button className="button-link" onClick={()=>transferHandler(j.id)}>Go to job details</button>
               </span>
               {j.interviewDate ? (
                 <span className='interviewDate'>interview on {formatDate(j.interviewDate)}</span>

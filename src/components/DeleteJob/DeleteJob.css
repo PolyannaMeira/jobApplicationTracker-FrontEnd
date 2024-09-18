@@ -1,29 +1,62 @@
-.delete-container{
-    display: flex;
-    margin: auto;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 70%;
-    height: 80vh;
-  }
-  
-  .btn-container{
-    margin-top: 20px;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    width: 100%;
-  }
-  
-  .btn{
-    margin: 0 5px;
-    font-size: 14px;
-    cursor: pointer;
-    background-color: #dadddf;
-    color: black;
-    border-radius: 10px;
-    transition: background-color 0.3s;
-  }
-  
-  
+/* DeleteJob.css */
+
+.delete-container {
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  width: 425px;
+  margin: auto;
+  position: relative; /* Allows absolute positioning of child elements */
+}
+
+.cancel-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.delete-container div {
+  margin-bottom: 20px;
+  text-align: center;
+}
+.btn{
+  font-size: 18px;
+  color: #fff;
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  margin: 5px;
+}
+
+.delete-confirm-btn:hover,
+.delete-cancel-btn:hover {
+  background-color: #c9c9c9;
+}
+
+.delete-cancel-btn,
+.delete-confirm-btn {
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  cursor: pointer;
+  margin: 5px;
+
+}
+
+.delete-cancel-btn {
+  background-color: #f0f0f0;
+}
+
+.delete-confirm-btn {
+  background-color: #d9534f;
+  color: #fff;
+}
