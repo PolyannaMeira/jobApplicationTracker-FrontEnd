@@ -1,11 +1,21 @@
 .jobList{
     list-style: none;
-    
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .jobItem {
     display: flex;
     flex-direction: column;
+    background-color: #FEF7FF;
+    border-radius: 10px;
+    margin: 5px;
+    padding: 5px;
+    width: 80%;
 }
 
 .companyName{
@@ -15,11 +25,6 @@
 
 a:link{
     text-decoration: none;
-}
-
-h2{
-    text-align: center;
-    
 }
 
 .interviewDate{

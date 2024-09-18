@@ -2,6 +2,9 @@
     width: 100%;
     max-width: 500px;
     margin: 20px auto;
+    background-color: #ECE6F0;
+    border-radius: 10px;
+    width: 90%;
   }
   
   .search-input {
