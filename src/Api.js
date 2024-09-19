@@ -6,12 +6,18 @@ const Api = {
     const response = await fetch(url + "jobs");
     return response.json();
   },
-  getMyJobsDetails: async (id) => {
-    const response = await fetch(url + `jobs/${id}`);
 
+  getMyJobsDetails: async (id) => {
+    const response = await fetch(url + `job/${id}`);
     return response.json();
   },
 
+  deleteJobDetails: async (id) => {
+    const response = await fetch(url + `job/${id}`, {
+      method: 'DELETE', 
+    });
+    return response.json();
+  },
 };
 
 export default Api;
