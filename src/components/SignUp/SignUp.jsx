@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 import "./SignUp.css";
 
 const SignUp = () => {
@@ -10,6 +11,8 @@ const SignUp = () => {
     confirmPassword: "",
   });
 
+  const navigate = useNavigate(); 
+
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -19,8 +22,15 @@ const SignUp = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission logic here
-    console.log("Form Data:", formData);
+    if (formData.password === formData.confirmPassword) {
+      console.log("Form Data:", formData);
+
+      // If registration is successful, redirect to JobsPage page
+      navigate('/jobs');
+    } else {
+     // If the passwords do not match, display an error message
+      alert("Passwords do not match!");
+    }
   };
 
   return (
