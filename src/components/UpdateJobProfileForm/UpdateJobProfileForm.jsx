@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import  { useState } from "react";
+import  { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import "./UpdateJobProfileForm.css";
 
-const UpdateJobProfileForm = () => {
+const UpdateJobProfileForm = (jobData) => {
   const [formData, setFormData] = useState({
+    
     companyName: "",
     jobRole: "",
     salaryRange: "",
@@ -13,6 +16,23 @@ const UpdateJobProfileForm = () => {
     attachment: null,
     notes: "",
   });
+
+  // Pre-fill the form with the job data passed from the parent component
+  useEffect(() => {
+    if (jobData) {
+      setFormData({
+        companyName: jobData.companyName,
+        jobRole: jobData.jobTitle,
+        salaryRange: jobData.salaryRange,
+        jobUrl: jobData.jobUrl,
+        date: jobData.date,
+        location: jobData.location,
+        status: jobData.status,
+        attachment: null,
+        notes: jobData.notes,
+      });
+    }
+  }, [jobData]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -33,11 +53,13 @@ const UpdateJobProfileForm = () => {
     e.preventDefault();
     console.log("Form Data:", formData);
     // Add form submission logic here (Update logic)
+    onclose();
   };
 
+  const navigate = useNavigate(); // Hook for navigation
+
   const handleCancel = () => {
-    // Add cancel logic here
-    console.log("Cancelled");
+    navigate("/myjobs"); 
   };
 
   return (
