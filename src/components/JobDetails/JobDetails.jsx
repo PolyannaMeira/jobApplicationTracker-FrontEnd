@@ -41,7 +41,7 @@ const JobDetails = () => {
   }
 
   const updateHandler=(jobId)=>{
-    navigate(`/update/${jobId}`, { replace: true });
+    navigate(`/UpdateJobProfileForm/${jobId}`, { replace: true });
   }
   const backHandler=()=>{
     navigate(`/myjobs`, { replace: true });

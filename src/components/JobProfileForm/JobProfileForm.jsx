@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./JobProfileForm.css";
+import { useNavigate } from "react-router-dom";
 
 const JobProfileForm = () => {
   const [formData, setFormData] = useState({
@@ -32,12 +33,15 @@ const JobProfileForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Form Data:", formData);
-    // Add form submission logic here
+    onclose();
   };
 
+  const navigate = useNavigate(); // Hook for navigation
+  
   const handleCancel = () => {
-    // Add cancel logic here
-    console.log("Cancelled");
+    
+    navigate("/myjobs"); 
+    
   };
 
   return (

@@ -6,6 +6,8 @@ import Sort from './Sort/Sort';
 import Search from './Search/Search';
 import PlusButton from './PlusButton/PlusButton';
 import Navbar from './NavBar/NavBar';
+import JobProfileForm from './JobProfileForm/JobProfileForm';
+import UpdateJobProfileForm from './UpdateJobProfileForm/UpdateJobProfileForm';
 import { useNavigate } from 'react-router-dom';
 
 
@@ -14,7 +16,10 @@ const jobsList = [];
 const JobsPage = () => {
   const [myJobs, setMyJobs] = useState([]);
   const [selectedFilter, setSelectedFilter] = useState('');
-const navigate = useNavigate()
+  const [showCreateForm, setShowCreateForm] = useState(false);  // Controls the display of the creation form
+  const [showUpdateForm, setShowUpdateForm] = useState(false);  // Controls the display of the update form
+  const [jobToUpdate, setJobToUpdate] = useState(null); //Stores the job data to be updated
+  const navigate = useNavigate()
 
   useEffect(() => {
     Api.getMyJobsList().then((data) => setMyJobs(data));
@@ -42,6 +47,22 @@ const navigate = useNavigate()
     return `${day} ${month} ${year}`;
   };
 
+  // Function to open the create form
+  const handleShowCreateForm = () => {
+    setShowCreateForm(true);
+    setShowUpdateForm(false); // Ensure the update form is closed
+  };
+
+  
+
+  // Function to close any form
+  const handleCloseForm = () => {
+    setShowCreateForm(false);
+    setShowUpdateForm(false);
+    setJobToUpdate(null);
+  };
+
+
   return (
     <>
       <Navbar/>
@@ -66,7 +87,13 @@ const navigate = useNavigate()
             </li>
           ))}
         </ul>
-        <PlusButton/>
+        <PlusButton onClick={handleShowCreateForm} /> {/* Button to open the create form */}
+
+        {/* Render the create form when `showCreateForm` is true */}
+        {showCreateForm && <JobProfileForm onClose={handleCloseForm} />}
+        
+        {/* Render the update form when `showUpdateForm` is true */}
+        {showUpdateForm && <UpdateJobProfileForm jobData={jobToUpdate} onClose={handleCloseForm} />}
       </>
     </>
   );
