@@ -2,7 +2,7 @@ import { useState } from 'react';
 import PropTypes from "prop-types";
 import './Sort.css';
 
-const Sort = ({onSortChange}) => {
+const Sort = () => {
   const [isSortMenuOpen, setIsSortMenuOpen] = useState(false);
   const [sortCriteria, setSortCriteria] = useState('Sort');
 
@@ -13,7 +13,6 @@ const Sort = ({onSortChange}) => {
   const selectSortHandler = (criteria) => {
     setSortCriteria(criteria);
     setIsSortMenuOpen(false);
-    onSortChange(criteria);
   };
 
 
