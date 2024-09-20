@@ -11,7 +11,7 @@ import UpdateJobProfileForm from './UpdateJobProfileForm/UpdateJobProfileForm';
 import { useNavigate } from 'react-router-dom';
 
 
-const jobsList = [];
+// const jobsList = [];
 
 const JobsPage = () => {
   const [myJobs, setMyJobs] = useState([]);
@@ -66,8 +66,8 @@ const JobsPage = () => {
   return (
     <>
       <Navbar/>
-      <Search data={jobsList} />
-      <Sort />
+      <Search/>
+      <Sort onSortChange={handleSortChange} />
       <Filter selectedFilter={selectedFilter} onFilterChange={setSelectedFilter} />
 
       <>
