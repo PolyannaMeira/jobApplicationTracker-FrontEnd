@@ -110,6 +110,7 @@ const JobsPage = () => {
       <Sort onSortChange={setSortCriteria} />
       <Filter onFilterChange={setSelectedFilter} />
 
+
       <>
         <ul className='jobList'>
           {filteredJobs.map((j) => (

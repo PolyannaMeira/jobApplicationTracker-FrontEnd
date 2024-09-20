@@ -18,6 +18,11 @@ const Api = {
     });
     return response.json();
   },
+  searchJobs: async (query) => {
+    const response = await fetch(url + `jobs/search?query=${query}`);
+    if (!response.ok) throw new Error("Failed to fetch search results");
+    return response.json();
+  },
 };
 
 export default Api;

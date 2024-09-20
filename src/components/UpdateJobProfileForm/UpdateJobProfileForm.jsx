@@ -52,8 +52,33 @@ const UpdateJobProfileForm = (jobData) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Form Data:", formData);
-    // Add form submission logic here (Update logic)
-    onclose();
+    /*const formDataToSend = new FormData();
+  for (jobData) {
+    formDataToSend.append(key, formData[id]);????
+      }
+
+  try {
+    const response = await Api.getMyJobsDetails(jobId)`, {
+      method: "PUT", 
+      body: formDataToSend,
+      headers: {
+          'Content-Type': 'application/json',
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error("Failed to update job profile");
+    }
+
+   
+    const updatedJob = await response.json();
+    console.log("Job updated successfully:, updateJob);
+    navigate("/myjobs"); 
+
+  } catch (error) {
+    console.error("Error updating job profile", error);
+  }
+}; */
   };
 
   const navigate = useNavigate(); // Hook for navigation
