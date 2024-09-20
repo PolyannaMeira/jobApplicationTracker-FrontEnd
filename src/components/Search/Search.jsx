@@ -1,44 +1,50 @@
-import  { useState } from 'react';
-import PropTypes from "prop-types";
-import './Search.css';
+import { useState } from 'react';
+import Api from "../../Api";
 
-const Search = ({ data }) => {
-  const [searchQuery, setSearchQuery] = useState('');
 
-  // Handle input change
-  const handleInputChange = (event) => {
-    setSearchQuery(event.target.value.toLowerCase());
-  };
+const Search = () => {
+    const [searchQuery, setSearchQuery] = useState('');
+    const [filteredData, setFilteredData] = useState([]);
+    let debounceTimer;
 
-  // Filter data based on search query
-  const filteredData = data.filter((item) =>
-    item.toLowerCase().includes(searchQuery)
-  );
+    const handleInputChange = (event) => {
+        const query = event.target.value.toLowerCase();
+        setSearchQuery(query);
+        
+        if (debounceTimer) {
+            clearTimeout(debounceTimer);
+        }
 
-  return (
-    <div className="search-container">
-      <input 
-        type="text"
-        placeholder="Search..."
-        value={searchQuery}
-        onChange={handleInputChange}
-        className="search-input"
-      />
-      
-      <div className="search-results">
-        {filteredData.map((item, index) => (
-          <div key={index} className="search-item">
-            {item}
-          </div>
-        ))}
-      </div>
-      
-    </div>
-  );
+        debounceTimer = setTimeout(async () => {
+            if (query) {
+                const results = await Api.searchJobs(query);
+                setFilteredData(results);
+            } else {
+                setFilteredData([]); // Reset if the query is empty
+            }
+        }, 300); // Adjust the debounce time as needed
+    };
+
+    return (
+        <div className="search-container">
+            <input 
+                type="text"
+                placeholder="Search..."
+                value={searchQuery}
+                onChange={handleInputChange}
+                className="search-input"
+            />
+            <div className="search-results">
+                {filteredData.map((item, index) => (
+                    <div key={index} className="search-item">
+                        {item.companyName} - {item.jobRole}
+                    </div>
+                ))}
+            </div>
+        </div>
+    );
 };
-Search.propTypes = {
-    data: PropTypes.arrayOf(PropTypes.string).isRequired,
-  };
+
 
 export default Search;
 
