@@ -15,6 +15,7 @@ const jobsList = [];
 
 const JobsPage = () => {
   const [myJobs, setMyJobs] = useState([]);
+  const [sortedJobs, setSortedJobs] = useState([]);
   const [selectedFilter, setSelectedFilter] = useState('');
   const [showCreateForm, setShowCreateForm] = useState(false);  // Controls the display of the creation form
   const [showUpdateForm, setShowUpdateForm] = useState(false);  // Controls the display of the update form
@@ -22,8 +23,36 @@ const JobsPage = () => {
   const navigate = useNavigate()
 
   useEffect(() => {
-    Api.getMyJobsList().then((data) => setMyJobs(data));
+    Api.getMyJobsList().then((data) => {
+      setMyJobs(data);
+      setSortedJobs(data);
+    });
   }, []);
+
+  const handleSortChange = (criteria) => {
+    let sortedArray = [...myJobs];
+
+    if(criteria === 'Company Name'){
+      sortedArray.sort((a, b)=> a.companyName.toLowerCase().localeCompare(b.companyName.toLowerCase()));
+      console.log(sortedArray)
+    } else if (criteria === 'Interview Date') {
+      sortedArray.sort((a, b) => {
+      const dateA = a.interviewDate ? new Date(a.interviewDate) : null;
+      const dateB = b.interviewDate ? new Date(b.interviewDate) : null;
+
+      if (dateA && dateB) {
+        return dateA - dateB; // Nearest date first
+      } else if (dateA) {
+        return -1; // Jobs with dates should come first
+      } else if (dateB) {
+        return 1;
+      } else {
+        return 0; // If neither has a date, maintain original order
+      }
+    });
+    }
+    setSortedJobs(sortedArray);
+  }
   
   const transferHandler = (data) => {
     navigate(`/myjob/${data}`, { replace: true });
@@ -67,12 +96,12 @@ const JobsPage = () => {
     <>
       <Navbar/>
       <Search data={jobsList} />
-      <Sort />
+      <Sort onSortChange={handleSortChange} />
       <Filter selectedFilter={selectedFilter} onFilterChange={setSelectedFilter} />
 
       <>
         <ul className='jobList'>
-          {myJobs.map((j) => (
+          {sortedJobs.map((j) => (
             <li className='jobItem' key={j.id}>
               <span className='companyName'>{j.companyName}</span>
               <span>{j.jobTitle}</span>
