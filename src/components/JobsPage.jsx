@@ -9,22 +9,54 @@ import Navbar from './NavBar/NavBar';
 import JobProfileForm from './JobProfileForm/JobProfileForm';
 import UpdateJobProfileForm from './UpdateJobProfileForm/UpdateJobProfileForm';
 import { useNavigate } from 'react-router-dom';
+import { FaHeart, FaRegHeart } from 'react-icons/fa';
 
 
-// const jobsList = [];
+const jobsList = [];
 
 const JobsPage = () => {
   const [myJobs, setMyJobs] = useState([]);
+  const [filteredJobs, setFilteredJobs] = useState([]);
   const [selectedFilter, setSelectedFilter] = useState('');
+  const [sortCriteria, setSortCriteria] = useState('');
   const [showCreateForm, setShowCreateForm] = useState(false);  // Controls the display of the creation form
   const [showUpdateForm, setShowUpdateForm] = useState(false);  // Controls the display of the update form
   const [jobToUpdate, setJobToUpdate] = useState(null); //Stores the job data to be updated
+
   const navigate = useNavigate()
 
   useEffect(() => {
     Api.getMyJobsList().then((data) => setMyJobs(data));
   }, []);
-  
+
+  useEffect(() => {
+    let filtered = myJobs;
+
+    if (selectedFilter === 'Interview Planned') {
+      filtered = filtered.filter(job => job.interviewDate);
+    } else if (selectedFilter === 'Interview Not Planned') {
+      filtered = filtered.filter(job => !job.interviewDate);
+    } else if (selectedFilter === 'Favorites') {
+      filtered = filtered.filter(job => job.isFavorite); // Assuming `isFavorite` is part of the job object
+    }
+
+    setFilteredJobs(filtered);
+  }, [selectedFilter, myJobs]);
+
+
+  useEffect(() => {
+    let sortedJobs = [...filteredJobs];
+
+    if (sortCriteria === 'Company Name') {
+      sortedJobs.sort((a, b) => a.companyName.localeCompare(b.companyName));
+    } else if (sortCriteria === 'Interview Date') {
+      sortedJobs.sort((a, b) => new Date(a.interviewDate) - new Date(b.interviewDate));
+    }
+
+    setFilteredJobs(sortedJobs);
+  }, [sortCriteria, filteredJobs]);
+
+
   const transferHandler = (data) => {
     navigate(`/myjob/${data}`, { replace: true });
   }
@@ -53,7 +85,7 @@ const JobsPage = () => {
     setShowUpdateForm(false); // Ensure the update form is closed
   };
 
-  
+
 
   // Function to close any form
   const handleCloseForm = () => {
@@ -62,37 +94,50 @@ const JobsPage = () => {
     setJobToUpdate(null);
   };
 
+  const toggleFavorite = (jobId) => {
+    setMyJobs(prevJobs =>
+      prevJobs.map(job => 
+        job.id === jobId ? { ...job, isFavorite: !job.isFavorite } : job
+      )
+    );
+    // Here, you would also make an API call to update the favorite status on the server
+  };
 
   return (
     <>
       <Navbar/>
-      <Search/>
-      <Sort/>
-      <Filter selectedFilter={selectedFilter} onFilterChange={setSelectedFilter} />
+      <Search data={jobsList} />
+      <Sort onSortChange={setSortCriteria} />
+      <Filter onFilterChange={setSelectedFilter} />
+
 
       <>
         <ul className='jobList'>
-          {myJobs.map((j) => (
+          {filteredJobs.map((j) => (
             <li className='jobItem' key={j.id}>
-              <span className='companyName'>{j.companyName}</span>
-              <span>{j.jobTitle}</span>
-              <span className='jobLink'>
+              <div className="left-container">
+                <span className='companyName'>{j.companyName}</span>
                 <button className="button-link" onClick={()=>transferHandler(j.id)}>Go to job details</button>
-              </span>
-              {j.interviewDate ? (
-                <span className='interviewDate'>interview on {formatDate(j.interviewDate)}</span>
-              ) : (
-                <span>interview not scheduled</span>
-              )}
+              </div>
+              <div className="right-container">
+                {/* Favorite Icon */}
+                <span onClick={() => toggleFavorite(j.id)} className='favoriteIcon'>
+                  {j.isFavorite ? <FaHeart className="heart-icon" /> : <FaRegHeart className="heart-icon" />}
+                </span>
+                {/* Interview Date */}
+                {j.interviewDate ? (
+                  <span className='interviewDate'>{formatDate(j.interviewDate)}</span>
+                ) : (
+                  <span className='noInterview'>No interview scheduled</span>
+                )}
+              </div>
             </li>
           ))}
         </ul>
-        <PlusButton onClick={handleShowCreateForm} /> {/* Button to open the create form */}
+        <PlusButton onClick={handleShowCreateForm} />
 
-        {/* Render the create form when `showCreateForm` is true */}
         {showCreateForm && <JobProfileForm onClose={handleCloseForm} />}
-        
-        {/* Render the update form when `showUpdateForm` is true */}
+
         {showUpdateForm && <UpdateJobProfileForm jobData={jobToUpdate} onClose={handleCloseForm} />}
       </>
     </>

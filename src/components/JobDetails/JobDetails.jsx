@@ -63,7 +63,7 @@ const JobDetails = () => {
         <p><strong>Status:</strong> {job.status}</p>
         <p><strong>Attachment:</strong> {job.attachment}</p>
         <p><strong>Job URL:</strong>{" "}
-          <a href={job.jobUrl} target="_blank" rel="noopener noreferrer"> {job.jobUrl}</a>
+        <p><strong>Job URL:</strong>{" "} <a href={job.jobUrl} target="_blank" rel="noopener noreferrer">Link</a> </p>
         </p>
         <p><strong>Location:</strong> {job.location}</p>
         <p><strong>Notes:</strong> {job.notes}</p>
