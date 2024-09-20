@@ -67,7 +67,7 @@ const JobsPage = () => {
     <>
       <Navbar/>
       <Search/>
-      <Sort onSortChange={handleSortChange} />
+      <Sort/>
       <Filter selectedFilter={selectedFilter} onFilterChange={setSelectedFilter} />
 
       <>
