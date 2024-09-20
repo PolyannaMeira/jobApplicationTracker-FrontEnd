@@ -61,6 +61,7 @@ const AccountDetails = () => {
 
   return (
     <div className="account-details-container">
+      
       <h2>Account Details</h2>
       <form className="account-details-form" onSubmit={handleUpdate}>
         <div className="form-group">
