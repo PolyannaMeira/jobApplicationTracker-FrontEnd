@@ -2,7 +2,7 @@ import { useState } from 'react';
 import PropTypes from "prop-types";
 import './Sort.css';
 
-const Sort = () => {
+const Sort = ({onSortChange}) => {
   const [isSortMenuOpen, setIsSortMenuOpen] = useState(false);
   const [sortCriteria, setSortCriteria] = useState('Sort');
 
@@ -13,13 +13,12 @@ const Sort = () => {
   const selectSortHandler = (criteria) => {
     setSortCriteria(criteria);
     setIsSortMenuOpen(false);
+    onSortChange(criteria);
   };
 
 
-  const getCheckMark = (option, type) => {
-    if (type === 'criteria') {
+  const getCheckMark = (option) => {
       return sortCriteria === option ? '✔️' : '';
-    }
   };
 
   return (
@@ -31,10 +30,10 @@ const Sort = () => {
       {isSortMenuOpen && (
           <ul className="sort-menu">
             <li onClick={() => selectSortHandler('Company Name')}>
-              {getCheckMark('Company Name', 'criteria')} Company Name
+              {getCheckMark('Company Name')} Company Name
             </li>
             <li onClick={() => selectSortHandler('Interview Date')}>
-              {getCheckMark('Interview Date', 'criteria')} Interview Date
+              {getCheckMark('Interview Date')} Interview Date
             </li>
           </ul>
       )}

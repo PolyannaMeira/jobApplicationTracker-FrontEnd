@@ -1,32 +1,72 @@
-.jobList{
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
 .jobItem {
     display: flex;
+    justify-content: space-between;
+    align-items: flex-start;  /* Align items at the top */
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+    background-color: #f9f9f9;
+    margin-bottom: 10px;
+    border-radius: 5px;
+  }
+   
+  .left-container {
+    display: flex;
     flex-direction: column;
-    background-color: #FEF7FF;
-    border-radius: 10px;
-    margin: 5px;
-    padding: 5px;
-    width: 80%;
-}
-
-.companyName{
-    font-size: 17px;
+    justify-content: space-between;
+    align-items: flex-start; /* Justify left */
+  }
+  
+  .right-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end; /* Justify right */
+  }
+  
+  /* Styling for left side (Company Name and Go to Job Details) */
+  .companyName {
     font-weight: bold;
-}
-
-a:link{
-    text-decoration: none;
-}
-
-.interviewDate{
+    font-size: 1.1rem;
+    color: #333;
+    margin-bottom: 5px;
+  }
+  
+  .button-link {
+    background: none;
+    border: none;
+    color: #007bff;
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+  
+  .button-link:hover {
+    color: #0056b3;
+  }
+  
+  /* Styling for right side (Favorite Icon and Interview Date) */
+  .favoriteIcon {
+    cursor: pointer;
+    margin-bottom: 5px;
+  }
+  
+  .heart-icon {
+    font-size: 20px;
     color: red;
-}
+  }
+  
+  .interviewDate,
+  .noInterview {
+    font-size: 0.9rem;
+    color: #666;
+    text-align: right;
+  }
+  
+  .interviewDate {
+    font-weight: 600;
+  }
+  
+  .noInterview {
+    font-style: italic;
+    text-align: right;
+  }

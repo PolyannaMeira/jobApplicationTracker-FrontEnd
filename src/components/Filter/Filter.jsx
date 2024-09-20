@@ -1,8 +1,10 @@
 import  { useState } from "react";
+import PropTypes from "prop-types";
+
 
 import './Filter.css'
 
-const Filter= () => {
+const Filter= ({onFilterChange}) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [filterCriteria, setfilterCriteria] = useState("Filter"); // Valor padrão do botão
 
@@ -13,12 +15,11 @@ const Filter= () => {
   const handleFilterClick = (criteria) => {
     setfilterCriteria(criteria);
     setIsMenuOpen(false);
+    onFilterChange(criteria);
   };
 
-  const getCheckMark = (option, type) => {
-    if (type === 'criteria') {
+  const getCheckMark = (option) => {
       return filterCriteria === option ? '✔️' : '';
-    }
   };
 
   return (
@@ -40,6 +41,9 @@ const Filter= () => {
       )}
     </div>
   );
+};
+Filter.propTypes = {
+  onFilterChange: PropTypes.func.isRequired
 };
 
 export default Filter;

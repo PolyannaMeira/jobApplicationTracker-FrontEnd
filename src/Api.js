@@ -14,7 +14,7 @@ const Api = {
 
   deleteJobDetails: async (id) => {
     const response = await fetch(url + `job/${id}`, {
-      method: 'DELETE', 
+      method: "DELETE",
     });
     return response.json();
   },
