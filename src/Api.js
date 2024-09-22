@@ -15,7 +15,9 @@ const Api = {
   createJobProfile: async (formData) => {
     const response = await fetch(url + "job/", {
       method: "POST",
-      
+      headers: {
+        "Content-Type": "application/json",
+      },
       body: formData,
     });
     return response.json();

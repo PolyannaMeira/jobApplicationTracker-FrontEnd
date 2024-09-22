@@ -1,8 +1,7 @@
 import { useState } from "react";
 import "./JobProfileForm.css";
 import { useNavigate } from "react-router-dom";
-import Api from "../../Api"
-
+import Api from "../../Api";
 
 const JobProfileForm = () => {
   const [formData, setFormData] = useState({
@@ -25,39 +24,32 @@ const JobProfileForm = () => {
     });
   };
 
-  /*const handleFileChange = (e) => {
+  const handleFileChange = (e) => {
     setFormData({
       ...formData,
       attachment: e.target.files[0],
     });
-  };*/
+  };
 
-  const handleSubmit = async (e) => { 
-    e.preventDefault(); 
-    let dataToSend = new FormData(); 
-    
-   
-     Object.keys(formData).forEach((key) => { 
-      
-      dataToSend.append(key, formData[key]); 
-    }); 
-   
-  
-  try { 
-    await Api.createJobProfile(dataToSend); 
-    alert("Job created successfully!"); 
-  } catch (error){
-    alert(`Failed to create job: ${error.message}`);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    let dataToSend = new FormData();
+    Object.keys(formData).forEach((key) => {
+      dataToSend.append(key, formData[key]);
+    });
+
+    try {
+      await Api.createJobProfile(dataToSend);
+      alert("Job created successfully!");
+    } catch (error) {
+      alert(`Failed to create job: ${error.message}`);
     }
   };
-  
 
   const navigate = useNavigate(); // Hook for navigation
-  
+
   const handleCancel = () => {
-    
-    navigate("/myjobs"); 
-    
+    navigate("/myjobs");
   };
 
   return (
@@ -145,7 +137,7 @@ const JobProfileForm = () => {
 
         <div className="form-group">
           <label>Attachment</label>
-          <input type="file" name="attachment" onChange={handleChange} />
+          <input type="file" name="attachment" onChange={handleFileChange} />
         </div>
 
         <div className="form-group">
@@ -172,5 +164,3 @@ const JobProfileForm = () => {
 };
 
 export default JobProfileForm;
-
-
