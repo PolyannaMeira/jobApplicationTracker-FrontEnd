@@ -12,6 +12,15 @@ const Api = {
     return response.json();
   },
 
+  createJobProfile: async (formData) => {
+    const response = await fetch(url + "job/", {
+      method: "POST",
+      
+      body: formData,
+    });
+    return response.json();
+  },
+
   deleteJobDetails: async (id) => {
     const response = await fetch(url + `job/${id}`, {
       method: "DELETE",
