@@ -105,7 +105,6 @@ const JobsPage = () => {
 
   return (
     <>
-      <Navbar/>
       <Search data={jobsList} />
       <Sort onSortChange={setSortCriteria} />
       <Filter onFilterChange={setSelectedFilter} />
