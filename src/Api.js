@@ -16,10 +16,12 @@ const Api = {
     const response = await fetch(url + "job", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json",
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
       },
-      body: formData,
+      body: JSON.stringify(formData) ,
     });
+    console.log(JSON.stringify(formData))
     return response.json();
   },
 
