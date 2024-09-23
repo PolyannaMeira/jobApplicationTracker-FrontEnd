@@ -1,9 +1,11 @@
 import  { useState } from "react";
 import  { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import api from "../../Api"
 import "./UpdateJobProfileForm.css";
 
 const UpdateJobProfileForm = (jobData) => {
+  const { id } = useParams();
   const [formData, setFormData] = useState({
     
     companyName: "",
@@ -17,22 +19,36 @@ const UpdateJobProfileForm = (jobData) => {
     notes: "",
   });
 
+  const [loading, setLoading] = useState(true);
+
   // Pre-fill the form with the job data passed from the parent component
   useEffect(() => {
-    if (jobData) {
-      setFormData({
-        companyName: jobData.companyName,
-        jobRole: jobData.jobTitle,
-        salaryRange: jobData.salaryRange,
-        jobUrl: jobData.jobUrl,
-        date: jobData.date,
-        location: jobData.location,
-        status: jobData.status,
-        attachment: null,
-        notes: jobData.notes,
-      });
-    }
-  }, [jobData]);
+    
+    const fetchJobDetails = async () => {
+      try {
+        const jobDetails = await api.getMyJobsDetails(id); 
+        setFormData({
+          companyName: jobDetails.companyName || "",
+          jobRole: jobDetails.jobTitle || "",
+          salaryRange: jobDetails.salaryRange || "",
+          jobUrl: jobDetails.jobUrl || "",
+          date: jobDetails.date || "",
+          location: jobDetails.location || "",
+          status: jobDetails.status || "",
+          attachment: null,
+          notes: jobDetails.notes || "",
+        });
+        setLoading(false); 
+      } catch (error) {
+        console.error("Error fetching job details:", error);
+        setLoading(false);
+      }
+    };
+
+    
+    fetchJobDetails();
+  }, [id]);
+
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -49,43 +65,50 @@ const UpdateJobProfileForm = (jobData) => {
     });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Form Data:", formData);
-    /*const formDataToSend = new FormData();
-  for (jobData) {
-    formDataToSend.append(key, formData[id]);????
+  
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+    
+      
+      const formDataToSend = new FormData();
+      formDataToSend.append("companyName", formData.companyName);
+      formDataToSend.append("interviewDate", formData.date); 
+      formDataToSend.append("jobRole", formData.jobRole);
+      formDataToSend.append("salary", formData.salaryRange);
+      formDataToSend.append("status", formData.status);
+      formDataToSend.append("jobUrl", formData.jobUrl);
+      formDataToSend.append("location", formData.location);
+      formDataToSend.append("notes", formData.notes);
+    
+      
+      if (formData.attachment) {
+        formDataToSend.append("attachment", formData.attachment);
       }
-
-  try {
-    const response = await Api.getMyJobsDetails(jobId)`, {
-      method: "PUT", 
-      body: formDataToSend,
-      headers: {
-          'Content-Type': 'application/json',
-      },
-    });
-
-    if (!response.ok) {
-      throw new Error("Failed to update job profile");
-    }
-
-   
-    const updatedJob = await response.json();
-    console.log("Job updated successfully:, updateJob);
-    navigate("/myjobs"); 
-
-  } catch (error) {
-    console.error("Error updating job profile", error);
-  }
-}; */
-  };
+    
+      try {
+       
+        const response = await api.updateJob(jobData.id, formDataToSend); 
+        console.log("Job updated successfully:", response);
+        
+        
+        navigate("/myjobs"); 
+      } catch (error) {
+        console.error("Error updating job:", error);
+      }
+    };
+    
+ 
 
   const navigate = useNavigate(); // Hook for navigation
 
   const handleCancel = () => {
     navigate("/myjobs"); 
   };
+
+  if (loading) {
+    return <div>Loading...</div>; 
+  }
+
 
   return (
     <div className="update-job-profile-form-container">
@@ -143,7 +166,7 @@ const UpdateJobProfileForm = (jobData) => {
           <input
             type="date"
             name="date"
-            value={formData.date}
+            value={formData.date.split('T')[0]} 
             onChange={handleChange}
             required
           />
