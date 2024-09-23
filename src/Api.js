@@ -13,7 +13,7 @@ const Api = {
   },
 
   createJobProfile: async (formData) => {
-    const response = await fetch(url + "job/", {
+    const response = await fetch(url + "job", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -22,6 +22,20 @@ const Api = {
     });
     return response.json();
   },
+
+  updateJob : async (id, formData) => {
+    const response = await fetch(`url/job/${id}`, {
+      method: "PUT",
+      body: formData, 
+    });
+    if (!response.ok) {
+      throw new Error("Failed to update job");
+    }
+  
+    return response.json(); 
+  },
+  
+  
 
   deleteJobDetails: async (id) => {
     const response = await fetch(url + `job/${id}`, {
