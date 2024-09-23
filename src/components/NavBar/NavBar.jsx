@@ -1,7 +1,7 @@
 
 import "./NavBar.css"; 
 import HamburgerButton from "../HamburgerButton/HamburgerButton";
-import User from "./../User/User";
+
 
 function Navbar() {
   return (
@@ -14,7 +14,7 @@ function Navbar() {
         
       </div>
      
-      <User/>
+      <div></div>
     </nav>
   );
 }
