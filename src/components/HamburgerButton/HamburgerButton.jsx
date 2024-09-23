@@ -1,18 +1,34 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom"; 
 import './HamburgerButton.css'
 
-const HamburgerButton = () => {
-  const [isOpen, setIsOpen] = useState(false);
 
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
+
+  function HamburgerButton() {
+    const [isOpen, setIsOpen] = useState(false);
+    const navigate = useNavigate(); //Hook for navigation
+  
+    const toggleMenu  = () => {
+      setIsOpen(!isOpen);
+    };
+  
+    const handleAccountDetails = () => {
+      navigate("/account-details");
+    };
+
+    const handleCreatJobProfile = () => {
+      navigate ("/JobProfileForm");
+    }
+  
+    const handleLogout = () => {
+      navigate ("/")
+    };
 
   return (
     <>
       <button
-        className={`hamburger-button ${isOpen ? "hamburger-open" : ""}`}
-        onClick={toggleMenu}
+        className={`hamburger-button ${open ? "hamburger-open" : ""}`}
+        onClick={toggleMenu }
       >
         <div className="hamburger-line line1"></div>
         <div className="hamburger-line line2"></div>
@@ -22,10 +38,10 @@ const HamburgerButton = () => {
       {isOpen && (
         <nav className="nav-menu">
           <ul>
-            <li>Account Details</li>
+            <li onClick={handleAccountDetails}>Account Details</li>
             <li>Agenda</li>
-            <li>Create Job Profile</li>
-            <li>Back to Home Page</li>
+            <li onClick={handleCreatJobProfile}>Create Job Profile</li>
+            <li onClick={handleLogout}>Log Out</li>
           </ul>
         </nav>
       )}

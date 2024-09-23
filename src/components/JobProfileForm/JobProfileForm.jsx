@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./JobProfileForm.css";
 import { useNavigate } from "react-router-dom";
+import Api from "../../Api";
 
 const JobProfileForm = () => {
   const [formData, setFormData] = useState({
@@ -30,18 +31,25 @@ const JobProfileForm = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form Data:", formData);
-    onclose();
+    let dataToSend = new FormData();
+    Object.keys(formData).forEach((key) => {
+      dataToSend.append(key, formData[key]);
+    });
+
+    try {
+      await Api.createJobProfile(dataToSend);
+      alert("Job created successfully!");
+    } catch (error) {
+      alert(`Failed to create job: ${error.message}`);
+    }
   };
 
   const navigate = useNavigate(); // Hook for navigation
-  
+
   const handleCancel = () => {
-    
-    navigate("/myjobs"); 
-    
+    navigate("/myjobs");
   };
 
   return (

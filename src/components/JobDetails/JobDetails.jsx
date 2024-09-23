@@ -11,6 +11,7 @@ const JobDetails = () => {
   const [error, setError] = useState(null); // State to handle errors
 
   const navigate = useNavigate();
+  
   // Fetch job details when the component mounts
   const fetchJobDetails = async (jobId) => {
     try {
@@ -62,13 +63,11 @@ const JobDetails = () => {
         <p><strong>Salary:</strong> {job.salary}</p>
         <p><strong>Status:</strong> {job.status}</p>
         <p><strong>Attachment:</strong> {job.attachment}</p>
-        <p><strong>Job URL:</strong>{" "}
         <p><strong>Job URL:</strong>{" "} <a href={job.jobUrl} target="_blank" rel="noopener noreferrer">Link</a> </p>
-        </p>
         <p><strong>Location:</strong> {job.location}</p>
         <p><strong>Notes:</strong> {job.notes}</p>
       </div>
-      <button className='update' onClick={() => updateHandler()}>Update</button>
+      <button className='update' onClick={() => updateHandler(job.id)}>Update</button>
       <button className='back' onClick ={()=>backHandler(id)} >Back</button>
       <button className='delete' onClick={() => deleteHandler()}>Delete</button>
     </div>
