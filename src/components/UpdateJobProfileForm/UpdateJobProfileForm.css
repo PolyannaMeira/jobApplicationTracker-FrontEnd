@@ -1,5 +1,6 @@
 /* Container to center the form */
 .update-job-profile-form-container {
+  margin-top: 70px;
   display: flex;
   justify-content: center;
   align-items: center;

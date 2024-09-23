@@ -5,7 +5,6 @@ import Filter from './Filter/Filter';
 import Sort from './Sort/Sort';
 import Search from './Search/Search';
 import PlusButton from './PlusButton/PlusButton';
-import Navbar from './NavBar/NavBar';
 import JobProfileForm from './JobProfileForm/JobProfileForm';
 import UpdateJobProfileForm from './UpdateJobProfileForm/UpdateJobProfileForm';
 import { useNavigate } from 'react-router-dom';
@@ -105,7 +104,6 @@ const JobsPage = () => {
 
   return (
     <>
-      <Navbar/>
       <Search data={jobsList} />
       <Sort onSortChange={setSortCriteria} />
       <Filter onFilterChange={setSelectedFilter} />

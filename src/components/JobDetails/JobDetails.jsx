@@ -54,7 +54,6 @@ const JobDetails = () => {
   return (
 
     <div className="job-details">
-      <h1 className='heading'>Job Application Tracker</h1>
       <h2 className="title">Job Details</h2>
       <div className="job-details-container">
         <p><strong>Company Name:</strong> {job.companyName}</p>
