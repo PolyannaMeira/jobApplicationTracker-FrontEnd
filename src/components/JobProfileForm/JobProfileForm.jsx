@@ -4,10 +4,10 @@ import { useNavigate } from "react-router-dom";
 import Api from "../../Api";
 
 const JobProfileForm = () => {
-  const [formData, setFormData] = useState({
+  const [inputData, setInputData] = useState({
     companyName: "",
     jobRole: "",
-    salaryRange: "",
+    salary: "",
     jobUrl: "",
     date: "",
     location: "",
@@ -18,28 +18,26 @@ const JobProfileForm = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({
-      ...formData,
+    setInputData({
+      ...inputData,
       [name]: value,
     });
   };
 
   const handleFileChange = (e) => {
-    setFormData({
-      ...formData,
+    setInputData({
+      ...inputData,
       attachment: e.target.files[0],
     });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    let dataToSend = new FormData();
-    Object.keys(formData).forEach((key) => {
-      dataToSend.append(key, formData[key]);
-    });
-
+    
+    const formData = new FormData(); formData.append('attachment', inputData.attachment);
+   
     try {
-      await Api.createJobProfile(dataToSend);
+      await Api.createJobProfile(inputData);
       alert("Job created successfully!");
     } catch (error) {
       alert(`Failed to create job: ${error.message}`);
@@ -54,7 +52,7 @@ const JobProfileForm = () => {
 
   return (
     <div className="job-profile-form-container">
-      <form className="job-profile-form" onSubmit={handleSubmit}>
+      <form className="job-profile-form" onSubmit={handleSubmit} encType="multipart/form-data">
         <h2>Create a Job Profile</h2>
 
         <div className="form-group">
@@ -62,7 +60,7 @@ const JobProfileForm = () => {
           <input
             type="text"
             name="companyName"
-            value={formData.companyName}
+            value={inputData.companyName}
             onChange={handleChange}
             placeholder="Company Name"
             required
@@ -74,7 +72,7 @@ const JobProfileForm = () => {
           <input
             type="text"
             name="jobRole"
-            value={formData.jobRole}
+            value={inputData.jobRole}
             onChange={handleChange}
             placeholder="Job Role"
             required
@@ -82,13 +80,13 @@ const JobProfileForm = () => {
         </div>
 
         <div className="form-group">
-          <label>Salary Range</label>
+          <label>Salary</label>
           <input
             type="text"
-            name="salaryRange"
-            value={formData.salaryRange}
+            name="salary"
+            value={inputData.salary}
             onChange={handleChange}
-            placeholder="Salary Range"
+            placeholder="Salary"
           />
         </div>
 
@@ -97,7 +95,7 @@ const JobProfileForm = () => {
           <input
             type="url"
             name="jobUrl"
-            value={formData.jobUrl}
+            value={inputData.jobUrl}
             onChange={handleChange}
             placeholder="Job URL"
           />
@@ -108,7 +106,7 @@ const JobProfileForm = () => {
           <input
             type="date"
             name="date"
-            value={formData.date}
+            value={inputData.date}
             onChange={handleChange}
             required
           />
@@ -119,7 +117,7 @@ const JobProfileForm = () => {
           <input
             type="text"
             name="location"
-            value={formData.location}
+            value={inputData.location}
             onChange={handleChange}
             placeholder="Location"
           />
@@ -127,7 +125,7 @@ const JobProfileForm = () => {
 
         <div className="form-group">
           <label>Status</label>
-          <select name="status" value={formData.status} onChange={handleChange}>
+          <select name="status" value={inputData.status} onChange={handleChange}>
             <option value="">Select Status</option>
             <option value="Open">Open</option>
             <option value="Closed">Closed</option>
@@ -144,7 +142,7 @@ const JobProfileForm = () => {
           <label>Notes</label>
           <textarea
             name="notes"
-            value={formData.notes}
+            value={inputData.notes}
             onChange={handleChange}
             placeholder="Notes"
           ></textarea>
