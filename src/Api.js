@@ -12,32 +12,31 @@ const Api = {
     return response.json();
   },
 
-  createJobProfile: async (formData) => {
+  createJobProfile: async (jobData) => {
     const response = await fetch(url + "job", {
       method: "POST",
       headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
+        Accept: "application/json",
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify(formData) ,
+      body: JSON.stringify(jobData),
     });
-    console.log(JSON.stringify(formData))
+    console.log(JSON.stringify(jobData));
     return response.json();
   },
 
-  updateJob : async (id, formData) => {
+  updateJob: async (id, jobData) => {
     const response = await fetch(url + `job/${id}`, {
       method: "PUT",
-      body: formData, 
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(jobData),
     });
-    if (!response.ok) {
-      throw new Error("Failed to update job");
-    }
-  
-    return response.json(); 
+    console.log(JSON.stringify(jobData));
+    return response.json();
   },
-  
-  
 
   deleteJobDetails: async (id) => {
     const response = await fetch(url + `job/${id}`, {
