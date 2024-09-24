@@ -29,11 +29,11 @@ const Sort = ({onSortChange}) => {
       </button>
       {isSortMenuOpen && (
           <ul className="sort-menu">
-            <li onClick={() => selectSortHandler('Company Name')}>
-              {getCheckMark('Company Name')} Company Name
+            <li onClick={() => selectSortHandler('companyName')}>
+              {getCheckMark('companyName')} Company Name
             </li>
-            <li onClick={() => selectSortHandler('Interview Date')}>
-              {getCheckMark('Interview Date')} Interview Date
+            <li onClick={() => selectSortHandler('interviewDate')}>
+              {getCheckMark('interviewDate')} Interview Date
             </li>
           </ul>
       )}

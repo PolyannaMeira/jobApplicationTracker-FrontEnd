@@ -12,7 +12,7 @@ const UpdateJobProfileForm = (jobData) => {
     jobRole: "",
     salaryRange: "",
     jobUrl: "",
-    date: "",
+    interviewDate: "",
     location: "",
     status: "",
     attachment: null,
@@ -32,7 +32,7 @@ const UpdateJobProfileForm = (jobData) => {
           jobRole: jobDetails.jobTitle || "",
           salaryRange: jobDetails.salaryRange || "",
           jobUrl: jobDetails.jobUrl || "",
-          date: jobDetails.date || "",
+          interviewDate: jobDetails.interviewDate || "",
           location: jobDetails.location || "",
           status: jobDetails.status || "",
           attachment: null,
@@ -74,7 +74,8 @@ const UpdateJobProfileForm = (jobData) => {
       formDataToSend.append("companyName", formData.companyName);
       formDataToSend.append("interviewDate", formData.date); 
       formDataToSend.append("jobRole", formData.jobRole);
-      formDataToSend.append("salary", formData.salaryRange);
+      formDataToSend.append("interviewDate", formData.interviewDate);
+      formDataToSend.append("salary", formData.salary);
       formDataToSend.append("status", formData.status);
       formDataToSend.append("jobUrl", formData.jobUrl);
       formDataToSend.append("location", formData.location);
@@ -143,10 +144,10 @@ const UpdateJobProfileForm = (jobData) => {
           <label>Salary Range</label>
           <input
             type="text"
-            name="salaryRange"
-            value={formData.salaryRange}
+            name="salary"
+            value={formData.salary}
             onChange={handleChange}
-            placeholder="Salary Range"
+            placeholder="Salary"
           />
         </div>
 
@@ -164,9 +165,9 @@ const UpdateJobProfileForm = (jobData) => {
         <div className="form-group">
           <label>Date</label>
           <input
-            type="date"
-            name="date"
-            value={formData.date.split('T')[0]} 
+            type="interviewDate"
+            name="interviewDate"
+            value={formData.interviewDate.split('T')[0]} 
             onChange={handleChange}
             required
           />
