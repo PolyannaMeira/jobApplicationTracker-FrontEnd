@@ -1,0 +1,31 @@
+.react-calendar{
+    margin: 100px auto 0 auto;
+}
+
+.react-calendar__navigation{
+    background-color: #555;
+}
+
+.react-calendar__month-view__days__day{
+    color: black;
+}
+
+.react-calendar__month-view__days__day--neighboringMonth{
+    color: #aaa;
+}
+
+.react-calendar__month-view__days__day--weekend{
+    color: red;
+}
+
+.current-day {
+    background-color: blue !important;
+    color: white !important;
+    border-radius: 50%;
+  }
+  
+  .interview-day {
+    background-color: red !important;
+    color: white !important;
+    border-radius: 50%;
+  }
