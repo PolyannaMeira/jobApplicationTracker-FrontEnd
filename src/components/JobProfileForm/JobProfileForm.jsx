@@ -9,7 +9,7 @@ const JobProfileForm = () => {
     jobRole: "",
     salary: "",
     jobUrl: "",
-    date: "",
+    interviewDate: "",
     location: "",
     status: "",
     attachment: null,
@@ -104,9 +104,9 @@ const JobProfileForm = () => {
         <div className="form-group">
           <label>Date</label>
           <input
-            type="date"
-            name="date"
-            value={inputData.date}
+            type="interviewDate"
+            name="interviewDate"
+            value={inputData.interviewDate}
             onChange={handleChange}
             required
           />

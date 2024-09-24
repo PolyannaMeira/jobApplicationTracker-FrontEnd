@@ -26,7 +26,7 @@ const Api = {
   },
 
   updateJob : async (id, formData) => {
-    const response = await fetch(`url/job/${id}`, {
+    const response = await fetch(url + `job/${id}`, {
       method: "PUT",
       body: formData, 
     });
