@@ -64,8 +64,6 @@ const UpdateJobProfileForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form submitted");
-
     const jobDataToSend = {
       companyName: jobData.companyName,
       jobRole: jobData.jobRole,
@@ -78,8 +76,7 @@ const UpdateJobProfileForm = () => {
     };
 
     try {
-      const response = await api.updateJob(id, jobDataToSend);
-      console.log("Job updated successfully:", response);
+     await api.updateJob(id, jobDataToSend);
       navigate("/myjobs"); // Redirect after successful update
     } catch (error) {
       console.error("Error updating job:", error);

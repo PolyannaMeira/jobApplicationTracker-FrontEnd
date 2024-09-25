@@ -21,7 +21,6 @@ const Api = {
       },
       body: JSON.stringify(jobData),
     });
-    console.log(JSON.stringify(jobData));
     return response.json();
   },
 
@@ -34,7 +33,6 @@ const Api = {
       },
       body: JSON.stringify(jobData),
     });
-    console.log(JSON.stringify(jobData));
     return response.json();
   },
 

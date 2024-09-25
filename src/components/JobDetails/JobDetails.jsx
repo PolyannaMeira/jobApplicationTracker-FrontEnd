@@ -50,7 +50,7 @@ const JobDetails = () => {
   };
 
   const deleteHandler = (jobId) => {
-    navigate(`/delete/${jobId}`, { replace: true });
+    navigate(`/myjob/${jobId}/delete`, { replace: true });
   };
 
   // Display job details if data is fetched successfully
@@ -70,7 +70,7 @@ const JobDetails = () => {
       </div>
       <button className='update' onClick={() => updateHandler(job.id)}>Update</button>
       <button className='back' onClick={backHandler}>Back</button>
-      <button className='delete' onClick={() => deleteHandler()}>Delete</button>
+      <button className='delete' onClick={() => deleteHandler(job.id)}>Delete</button>
     </div>
   );
 };
