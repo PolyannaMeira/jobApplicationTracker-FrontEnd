@@ -101,16 +101,16 @@
 .search-container {
   display: flex;
   justify-content: center;
-  margin: 20px auto;
-  width: 100%;
+  margin: 20px 10px auto;
+  width: 95%;
 }
 
 /* Search Bar Styling */
 .search-bar {
-  width: 90%; /* Takes most of the container's width */
-  max-width: 600px; /* Max width to restrict on large screens */
-  padding: 12px 15px;
-  border-radius: 25px; /* Rounded corners for aesthetic appeal */
+  width: 80%; /* Takes most of the container's width */
+  max-width: 500px; /* Max width to restrict on large screens */
+  padding: 10px 10px 10px 10px;
+  border-radius: 20px;
   border: 1px solid #ccc;
   background-color: #f0f0f0; /* Soft background color */
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
