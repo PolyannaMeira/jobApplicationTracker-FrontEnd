@@ -9,17 +9,13 @@ const DeleteJob = () => {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const deleteHandler = async (jobId) => {
+  const deleteHandler = async () => {
     try {
-      const response = await Api.deleteJobDetails(jobId);
-      console.log(response)
-      navigate(`/myjobs/`, { replace: true });
-    } catch (error) {
-      console.error(error);
-    }
-    try {
-      alert('Job successfully deleted');
-      navigate('/myjobs');
+      const response = await Api.deleteJobDetails(id);
+        if(response.message){
+        alert("Job has been deleted");
+        navigate(`/myjobs`, { replace: true });
+      }
     } catch (error) {
       alert('An error occurred while deleting the job');
       console.error(error);
@@ -27,7 +23,7 @@ const DeleteJob = () => {
   }
 
   const goBackHandler=()=>{
-    navigate(`/myjobs`, { replace: true });
+    navigate(`/myjob/${id}`, { replace: true });
   }
 
   const handleCancel=()=>{
@@ -40,8 +36,8 @@ const DeleteJob = () => {
       <FaTrash style={{ marginLeft: '10px', color: 'red', fontSize: '24px', cursor: 'pointer' }} />
         <div>Are you sure you want to delete this job ? This action cannot be undone.</div>
         <div className='btn'>
-          <button className="delete-cancel-btn" onClick ={()=>goBackHandler(id)} >Cancel</button>
-          <button className="delete-confirm-btn" onClick={() => deleteHandler(id)}> Delete</button>
+          <button className="delete-cancel-btn" onClick ={goBackHandler} >Cancel</button>
+          <button className="delete-confirm-btn" onClick={deleteHandler}> Delete</button>
         </div>
     </div>
   );
