@@ -85,7 +85,7 @@ const UpdateJobProfileForm = () => {
   };
 
   const handleCancel = () => {
-    navigate("/myjobs");
+    navigate(`/myjob/${id}`);
   };
 
   if (loading) {

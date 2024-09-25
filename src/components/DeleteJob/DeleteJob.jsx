@@ -27,14 +27,14 @@ const DeleteJob = () => {
   }
 
   const handleCancel=()=>{
-    navigate(`/myjobs`, { replace: true });
+    navigate(`/myjob/${id}`, { replace: true });
   }
 
   return (
     <div className="delete-container">
       <MdCancel className="cancel-icon" onClick={handleCancel}/>
       <FaTrash style={{ marginLeft: '10px', color: 'red', fontSize: '24px', cursor: 'pointer' }} />
-        <div>Are you sure you want to delete this job ? This action cannot be undone.</div>
+        <div className='delete-confirm-message'>Are you sure you want to delete this job ? This action cannot be undone.</div>
         <div className='btn'>
           <button className="delete-cancel-btn" onClick ={goBackHandler} >Cancel</button>
           <button className="delete-confirm-btn" onClick={deleteHandler}> Delete</button>

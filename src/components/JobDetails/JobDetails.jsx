@@ -68,9 +68,11 @@ const JobDetails = () => {
         <p><strong>Location:</strong> {job.location}</p>
         <p><strong>Notes:</strong> {job.notes}</p>
       </div>
-      <button className='update' onClick={() => updateHandler(job.id)}>Update</button>
-      <button className='back' onClick={backHandler}>Back</button>
-      <button className='delete' onClick={() => deleteHandler(job.id)}>Delete</button>
+        <div className='update-back-delete-btn'>
+          <button className='update' onClick={() => updateHandler(job.id)}>Update</button>
+          <button className='back' onClick={backHandler}>Back</button>
+          <button className='delete' onClick={() => deleteHandler(job.id)}>Delete</button>
+        </div>
     </div>
   );
 };
