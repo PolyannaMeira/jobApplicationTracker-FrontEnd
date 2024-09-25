@@ -110,7 +110,7 @@ const JobProfileForm = () => {
         <div className="form-group">
           <label>Interview Date</label>
           <input
-            type="interviewDate"
+            type="date"
             name="interviewDate"
             value={inputData.interviewDate.split('T')[0]} 
             onChange={handleChange}
