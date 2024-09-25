@@ -16,8 +16,12 @@ import './HamburgerButton.css'
       navigate("/account-details");
     };
 
-    const handleCreatJobProfile = () => {
+    const handleCreateJobProfile = () => {
       navigate ("/JobProfileForm");
+    }
+
+    const handleAgenda = () => {
+      navigate ( "/agenda");
     }
   
     const handleLogout = () => {
@@ -39,8 +43,8 @@ import './HamburgerButton.css'
         <nav className="nav-menu">
           <ul>
             <li onClick={handleAccountDetails}>Account Details</li>
-            <li>Agenda</li>
-            <li onClick={handleCreatJobProfile}>Create Job Profile</li>
+            <li onClick={handleAgenda}>Agenda</li>
+            <li onClick={handleCreateJobProfile}>Create Job Profile</li>
             <li onClick={handleLogout}>Log Out</li>
           </ul>
         </nav>
