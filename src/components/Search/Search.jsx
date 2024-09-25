@@ -1,3 +1,4 @@
+
 // src/components/Search/Search.jsx
 import { useState } from 'react';
 import Api from "../../Api";
@@ -46,6 +47,7 @@ const Search = () => {
       <div className="search-results">
         {filteredData.map((item, index) => (
           <div key={index} className="search-item" onClick={() => handleResultClick(item)}>
+
             {item.companyName} - {item.jobRole}
           </div>
         ))}
@@ -55,4 +57,3 @@ const Search = () => {
 };
 
 export default Search;
-
