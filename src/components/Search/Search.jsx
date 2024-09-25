@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Api from "../../Api";
+import "./Search.css";
 
 
 const Search = () => {

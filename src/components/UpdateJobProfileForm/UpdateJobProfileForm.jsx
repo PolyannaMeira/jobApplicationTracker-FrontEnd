@@ -163,7 +163,7 @@ const UpdateJobProfileForm = (jobData) => {
         </div>
 
         <div className="form-group">
-          <label>Date</label>
+          <label>Interview Date</label>
           <input
             type="interviewDate"
             name="interviewDate"

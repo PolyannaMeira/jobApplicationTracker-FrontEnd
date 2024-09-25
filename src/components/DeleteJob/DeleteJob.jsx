@@ -19,7 +19,7 @@ const DeleteJob = () => {
     }
     try {
       alert('Job successfully deleted');
-      navigate('/');
+      navigate('/myjobs');
     } catch (error) {
       alert('An error occurred while deleting the job');
       console.error(error);
