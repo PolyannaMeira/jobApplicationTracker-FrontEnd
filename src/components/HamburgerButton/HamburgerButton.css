@@ -26,7 +26,7 @@
 .nav-menu {
   position: absolute;
   top: 50px; /* Adjust the position relative to your layout */
-  right: 0; /* Aligns the menu to the right */
+  left: 0; /* Aligns the menu to the right */
   background-color: #fff;
   border: 1px solid #ddd;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
