@@ -1,0 +1,140 @@
+/* Container for Search Bar, Sort, and Filter */
+.search-sort-filter-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%;
+  margin: 20px auto;
+}
+
+/* Search Bar Styling */
+.search-bar {
+  flex-grow: 1;
+  margin-right: 10px; /* Space between search bar and sort/filter buttons */
+  padding: 10px 15px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  background-color: #f0f0f0;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+  font-size: 1rem;
+  outline: none;
+  transition: box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.search-bar:focus {
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  background-color: #ffffff;
+}
+
+/* Sort and Filter Button Container */
+.sort-filter-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+/* Sort and Filter Button Styling */
+.sort-button,
+.filter-button {
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.sort-button:hover,
+.filter-button:hover {
+  background-color: #f0f0f0;
+}
+
+/* Job Items Container */
+.job-items-container {
+  width: 80%;
+  margin: 0 auto;
+  padding-bottom: 60px;
+}
+
+/* Job Item Styling */
+.jobItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid #ddd;
+  background-color: #ffffff;
+  margin: 15px auto;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 100%;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+}
+
+.jobItem:hover {
+  transform: scale(1.02);
+}
+
+/* Alignments for left and right content in the job item */
+.left-container,
+.right-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.left-container {
+  align-items: flex-start;
+}
+
+.right-container {
+  align-items: flex-end;
+}
+
+/* Floating Action Button (Plus Button) */
+.floating-plus-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #28a745;
+  border: none;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  color: white;
+  font-size: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.floating-plus-button:hover {
+  background-color: #218838;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+}
+
+/* Responsive adjustments for smaller devices */
+@media (max-width: 768px) {
+  .search-sort-filter-container {
+    flex-direction: column;
+    width: 95%;
+  }
+
+  .search-bar {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+
+  .sort-filter-buttons {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .job-items-container {
+    width: 95%;
+  }
+}
