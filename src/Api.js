@@ -1,7 +1,20 @@
-// This is fixed, we'll see later how to update it.
-const url = "http://localhost:5000/";
+
+const url = import.meta.env.VITE_APP_API_URL;
 
 const Api = {
+  /*getLogin : async (email, password) => {
+    const response = await fetch( url + "/login", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ email, password }),
+  });
+
+  return response.json();
+
+},*/
+
   getMyJobsList: async () => {
     const response = await fetch(url + "jobs");
     return response.json();
