@@ -54,11 +54,7 @@ const JobProfileForm = () => {
 
   return (
     <>
-      <header className="header">
-        <span className="nav-button">☰</span>
-        <h1 className="header-title">Job Application Tracker</h1>
-      </header>
-
+      
       <h2 className="create-job-profile-title">Create a Job Profile</h2>
 
       <div className="job-profile-form-container">

@@ -34,10 +34,14 @@ function HamburgerButton() {
         <nav className="nav-menu">
           <ul>
 
-            <li onClick={() => handleNavigation("/account-details")}>Account Details</li>
+            <li onClick={() => handleNavigation("/account-details")}>
+              Account Details
+            </li>
             <li onClick={() => handleNavigation("/agenda")}>Agenda</li>
+
             <li onClick={() => handleNavigation("/JobProfileForm")}>Create Job Profile</li>
-            <li onClick={() => handleNavigation("/myjobs")}>Back to Home Page</li>
+            <li onClick={() => handleNavigation("/myjobs")}>Go to home page</li>
+           
             <li onClick={() => handleNavigation("/")}>Log Out</li>
 
           </ul>
