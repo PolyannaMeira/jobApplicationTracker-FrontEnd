@@ -1,34 +1,27 @@
 import  { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom'; 
+
 import './Login.css'; 
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState(null);
+  const [error] = useState(null);
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    const response = await fetch(url + "/", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email, password }),
-    });
-
-    const data = await response.json();
-
-    if (response.ok) {
-      
-      localStorage.setItem("token", data.token);
-      window.location.href = "/dashboard";
+    if (email === "user@example.com" && password === "password123") {
+        
+      navigate('/myjobs');
     } else {
       
-      setError(data.message);
+      alert("Email ou password wrong");
     }
   };
+  console.log('Email:', email, 'Password:', password);
+  
+    
 
   return (
     <div className="login-container">
@@ -62,7 +55,7 @@ const Login = () => {
         <div className="login-footer">
           <a href="#" className="login-reset">Reset password</a>
           <p className="login-text">
-            Don't have an account? <Link to="/signup" className="login-signUp">Sign up</Link> 
+            Do not have an account? <Link to="/signup" className="login-signUp">Sign up</Link> 
           </p>
         </div>
       </div>
