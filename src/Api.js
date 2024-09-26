@@ -1,5 +1,5 @@
-// This is fixed, we'll see later how to update it.
-const url = "http://localhost:5000/";
+
+const url = import.meta.env.VITE_APP_API_URL;
 
 const Api = {
   getMyJobsList: async () => {

@@ -5,26 +5,36 @@ import './Login.css';
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState(null);
   const navigate = useNavigate();
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    /*if (email === "user@example.com" && password === "password123") {
-        
-        navigate('/myjobs');
-      } else {
-        
-        alert("Email ou senha incorretos");
-      }
-    };*/
-    console.log('Email:', email, 'Password:', password);
+    const response = await fetch(url + "/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email, password }),
+    });
+
+    const data = await response.json();
+
+    if (response.ok) {
+      
+      localStorage.setItem("token", data.token);
+      window.location.href = "/dashboard";
+    } else {
+      
+      setError(data.message);
+    }
   };
 
   return (
     <div className="login-container">
       <div className="login-card">
         <h2 className="login-title">Job Application Tracker</h2>
-        
+        {error && <p style={{ color: "red" }}>{error}</p>}
         <form onSubmit={handleLogin} className="login-form">
           <label htmlFor="email" className="login-label">Email</label>
           <input
@@ -32,6 +42,7 @@ const Login = () => {
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            required
             className="login-input"
           />
 
@@ -41,6 +52,7 @@ const Login = () => {
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            required
             className="login-input"
           />
 
