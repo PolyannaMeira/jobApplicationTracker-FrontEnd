@@ -48,7 +48,7 @@
 button {
   width: 100%;
   padding: 10px;
-  background-color: black;
+  background-color: #7e57c2;
   color: white;
   border: none;
   border-radius: 5px;
@@ -58,5 +58,5 @@ button {
 }
 
 button:hover {
-  background-color: #333;
+  background-color: #7e57c2;
 }

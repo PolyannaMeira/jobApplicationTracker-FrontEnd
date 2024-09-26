@@ -1,5 +1,6 @@
 import { useState,useEffect } from 'react';
 import Calendar from 'react-calendar';
+import { useNavigate } from 'react-router';
 import 'react-calendar/dist/Calendar.css';
 import './Agenda.css';
 import Api from '../../Api';
@@ -7,6 +8,7 @@ import Api from '../../Api';
 const Agenda = () => {
     const [value, setValue] = useState(new Date());
     const [interviewDates, setInterviewDates] = useState([]);
+    const navigate = useNavigate();
 
   useEffect(() => {
     const fetchJobs = async () => {
@@ -30,6 +32,10 @@ const Agenda = () => {
     );
   };
 
+  const handleNavigateHome = () => {
+    navigate('/myjobs');
+  }
+
   return (
     <div>
         <Calendar
@@ -44,6 +50,9 @@ const Agenda = () => {
           return null;
         }}
       />
+      <button onClick={handleNavigateHome} className='navigate-btn'>
+        Back to Home
+      </button>
     </div>
   )
 }

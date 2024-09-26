@@ -29,3 +29,9 @@
     color: white !important;
     border-radius: 50%;
   }
+
+  .navigate-btn{
+    background-color: #28a745;
+    width: 40%;
+    margin-left: 50%;
+  }
