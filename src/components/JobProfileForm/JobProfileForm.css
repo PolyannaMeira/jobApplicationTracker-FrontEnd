@@ -1,11 +1,48 @@
+/* Header Section */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background-color: #ffffff;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+/* Align the nav-button to the left and center the title */
+.header-title {
+  flex-grow: 1; /* Allows the title to take up available space */
+  text-align: center; /* Centers the title */
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0;
+}
+
+/* Ensure the nav-button stays on the left */
+.nav-button {
+  font-size: 25px;
+  cursor: pointer;
+}
+
+/* Create Job Profile Title */
+.create-job-profile-title {
+  margin-top: 100px; /* Adding margin to avoid overlap with header */
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
 /* Container to center the form */
 .job-profile-form-container {
-  margin-top: 70px;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #f7f7f7;
+  /* Removed the gray background color */
 }
 
 /* Form Styling */
@@ -13,7 +50,6 @@
   background-color: white;
   padding: 30px;
   border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   width: 350px;
 }
 
