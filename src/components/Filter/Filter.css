@@ -2,10 +2,9 @@
   position: relative;
   display: block;
   float: right;
-  justify-content: center;  
+  justify-content: center;
   width: 50%;
   margin: 20px 0;
-  
 }
 
 .filter-button {
