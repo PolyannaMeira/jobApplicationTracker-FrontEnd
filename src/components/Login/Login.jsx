@@ -1,11 +1,14 @@
 import  { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom'; 
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
+
 
 import './Login.css'; 
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false); 
   const [error] = useState(null);
   const navigate = useNavigate();
 
@@ -19,7 +22,10 @@ const Login = () => {
       alert("Email ou password wrong");
     }
   };
-  console.log('Email:', email, 'Password:', password);
+  
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword); // Alterna entre mostrar e esconder a senha
+  };
   
     
 
@@ -40,14 +46,18 @@ const Login = () => {
           />
 
           <label htmlFor="password" className="login-label">Password</label>
-          <input
-            id="password"
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-            className="login-input"
-          />
+          <div className="password-input-wrapper">
+            <input
+              id="password"
+              type={showPassword ? "text" : "password"} 
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="login-input"
+            />
+            <span onClick={togglePasswordVisibility} className="password-toggle-icon">
+              {showPassword ? <FaEyeSlash /> : <FaEye />} 
+            </span>
+            </div>
 
           <button type="submit" className="login-button">Log in</button>
         </form>
