@@ -114,8 +114,8 @@ const JobsPage = () => {
           {filteredJobs.map((j) => (
             <li className='jobItem' key={j.id}>
               <div className="left-container">
-                <span className='companyName'>{j.companyName}</span>
-                <button className="button-link" onClick={()=>transferHandler(j.id)}>Go to job details</button>
+                <span className='companyName'>{j.companyName} - {j.jobRole}</span>
+                <a className="button-link" onClick={()=>transferHandler(j.id)}>Go to job details</a>
               </div>
               <div className="right-container">
                 {/* Favorite Icon */}
