@@ -4,11 +4,12 @@
       float: left;
       justify-content: center;
       width: 50%;
-      margin: 20px 0;
+      margin: 0 0 ;
     }
 
     .sort-button {
       padding: 12px 20px;
+      margin-left: 20px;
       font-size: 14px;
       cursor: pointer;
       background-color: #ECE6F0;
