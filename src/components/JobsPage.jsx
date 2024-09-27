@@ -110,9 +110,13 @@ const JobsPage = () => {
 
 
       <>
+      
         <ul className='jobList'>
+        <div className='title'><h1>My job list</h1></div>
           {filteredJobs.map((j) => (
+            
             <li className='jobItem' key={j.id}>
+              
               <div className="left-container">
                 <span className='companyName'>{j.companyName} - {j.jobRole}</span>
                 <a className="button-link" onClick={()=>transferHandler(j.id)}>Go to job details</a>
