@@ -7,7 +7,9 @@ import Api from '../../Api';
 
 const Agenda = () => {
     const [value, setValue] = useState(new Date());
+    const [activeMonth, setActiveMonth] = useState(new Date());
     const [interviewJobs, setInterviewJobs] = useState([]);
+    const [filteredJobs, setFilteredJobs] = useState([]);
     const navigate = useNavigate();
 
   useEffect(() => {
@@ -29,6 +31,14 @@ const Agenda = () => {
     fetchJobs();
   }, []);
 
+  useEffect(() => {
+    const filtered = interviewJobs.filter(job => 
+        job.interviewDate.getFullYear() === activeMonth.getFullYear() &&
+        job.interviewDate.getMonth() === activeMonth.getMonth()
+    );
+    setFilteredJobs(filtered);
+}, [activeMonth, interviewJobs]);
+
   const isInterviewDate = (date) => {
     return interviewJobs.some(
       (interviewJob) => interviewJob.interviewDate.toDateString() === date.toDateString()
@@ -44,6 +54,7 @@ const Agenda = () => {
         <Calendar
         onChange={setValue}
         value={value}
+        onActiveStartDateChange={({ activeStartDate }) => setActiveMonth(activeStartDate)}
         tileClassName={({ date }) => {
           if (date.toDateString() === new Date().toDateString()) {
             return 'current-day';
@@ -54,16 +65,16 @@ const Agenda = () => {
         }}
       />
        <div className="interview-list">
-                <h3>Upcoming Interviews</h3>
+                <h3>Interviews in {activeMonth.toLocaleString('default', { month: 'long' })} {activeMonth.getFullYear()}</h3>
                 <ul>
-                    {interviewJobs.length > 0 ? (
-                        interviewJobs.map((job, index) => (
+                    {filteredJobs.length > 0 ? (
+                        filteredJobs.map((job, index) => (
                             <li key={index}>
                                 <span className='company-name'>{job.companyName}</span><span>{job.interviewDate.toLocaleDateString()}</span>
                             </li>
                         ))
                     ) : (
-                        <li>No upcoming interviews</li>
+                        <li>No interviews this month</li>
                     )}
                 </ul>
             </div>
