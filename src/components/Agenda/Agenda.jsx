@@ -35,7 +35,7 @@ const Agenda = () => {
     const filtered = interviewJobs.filter(job => 
         job.interviewDate.getFullYear() === activeMonth.getFullYear() &&
         job.interviewDate.getMonth() === activeMonth.getMonth()
-    );
+    ).sort((a, b) => a.interviewDate - b.interviewDate);
     setFilteredJobs(filtered);
 }, [activeMonth, interviewJobs]);
 
