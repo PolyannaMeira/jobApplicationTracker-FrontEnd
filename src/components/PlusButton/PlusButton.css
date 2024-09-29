@@ -36,3 +36,13 @@
   outline: none;
   box-shadow: 0px 0px 0px 3px rgba(40, 167, 69, 0.5);
 }
+
+@media (max-width: 360px) {
+  .add-button {
+    width: 40px;  
+    height: 40px; 
+    font-size: 20px; 
+    bottom: 20px; 
+    right: 20px;  
+  }
+}

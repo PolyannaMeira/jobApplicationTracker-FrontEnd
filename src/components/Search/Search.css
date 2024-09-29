@@ -50,3 +50,23 @@
 .search-item:hover {
   background-color: #e9ecef;
 }
+
+@media (max-width: 360px) {
+  .search-container {
+    padding: 15px; 
+  }
+
+  .search-bar {
+    font-size: 14px; 
+    padding: 10px; 
+  }
+
+  .search-results {
+    max-height: 200px; 
+  }
+
+  .search-item {
+    padding: 8px; 
+    font-size: 14px; 
+  }
+}

@@ -75,7 +75,7 @@ const JobsPage = () => {
     const day = getDayWithSuffix(date.getDate());
     const month = date.toLocaleString('default', { month: 'short' });
     const year = date.getFullYear();
-    return `${day} ${month} ${year}`;
+    return `${day}  ${month} ${year}`;
   };
 
   // Function to open the create form
@@ -125,6 +125,7 @@ const JobsPage = () => {
                 {/* Favorite Icon */}
                 <span onClick={() => toggleFavorite(j.id)} className='favoriteIcon'>
                   {j.isFavorite ? <FaHeart className="heart-icon" /> : <FaRegHeart className="heart-icon" />}
+                  
                 </span>
                 {/* Interview Date */}
                 {j.interviewDate ? (

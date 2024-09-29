@@ -61,3 +61,22 @@
 .nav-menu ul li:hover {
   background-color: #f0f0f0;
 }
+
+@media (max-width: 360px) {
+  .hamburger-button {
+    width: 25px;
+    height: 20px;
+  }
+
+  .hamburger-line {
+    height: 2px; 
+  }
+
+  .nav-menu {
+    width: 100%; 
+  }
+
+  .nav-menu ul li {
+    padding: 12px 0; 
+  }
+}

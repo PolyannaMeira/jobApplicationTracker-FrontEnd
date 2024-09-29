@@ -31,6 +31,13 @@ body {
   display:flex;
   flex-direction: column;
   align-items: flex-end;
+  
+}
+
+.interviewDate{
+  margin-top: 10px;
+  font-weight: 700;
+  font-size: small;
 }
 .jobItem:hover {
   transform: scale(1.02);
@@ -43,4 +50,25 @@ body {
 }
 .favoriteIcon .heart-icon:hover {
   color: darkred;
+}
+
+@media (max-width: 360px) {
+  .jobItem {
+    padding: 8px;
+    border: 2px solid #fff;
+    height: auto;
+  }
+
+  .left-container, .right-container {
+    width: 100%;
+    align-items: center;
+  }
+
+  .left-container {
+    margin-bottom: 8px;
+  }
+
+  .heart-icon {
+    font-size: 20px;
+  }
 }

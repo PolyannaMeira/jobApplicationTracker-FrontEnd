@@ -66,3 +66,14 @@
   background-color: #e2e2e2;
 }
 
+@media (max-width: 360px) {
+  .filter-button {
+    font-size: 12px;
+    padding: 10px 15px;
+  }
+
+  .filter-menu li {
+    padding: 8px;
+  }
+}
+
