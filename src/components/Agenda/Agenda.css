@@ -92,3 +92,25 @@
   .interview-list li .company-name {
     font-weight: bold;
   }
+
+  @media (max-width: 768px) {
+    .react-calendar {
+      width: 90%;
+    }
+  
+    .react-calendar__month-view__days__day {
+      padding: 10px;
+      width: 30px;
+      height: 30px;
+    }
+  
+    .navigate-btn {
+      width: 80%;
+      margin-left: 10%;
+    }
+  
+    .interview-list li {
+      font-size: 1em;
+    }
+  }
+  

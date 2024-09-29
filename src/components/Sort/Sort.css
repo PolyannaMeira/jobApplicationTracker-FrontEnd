@@ -70,3 +70,18 @@
       background-color: #ddd;
       margin: 10px auto; /* Add space around the separator */
     }
+
+    @media (max-width: 360px) {
+      .sort-button {
+        font-size: 12px;
+        padding: 10px 15px;
+      }
+    
+      .sort-menu li {
+        padding: 8px;
+      }
+    
+      .sort-separator {
+        width: 100%;
+      }
+    }

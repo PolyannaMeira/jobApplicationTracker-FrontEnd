@@ -29,7 +29,7 @@
 
 /* Create Job Profile Title */
 .create-job-profile-title {
-  margin-top: 100px; /* Adding margin to avoid overlap with header */
+  margin-top: 40px; /* Adding margin to avoid overlap with header */
   font-size: 24px;
   font-weight: bold;
   text-align: center;
@@ -126,4 +126,36 @@ input[type="file"] {
 
 .btn-cancel:hover {
   background-color: #aaa;
+}
+
+@media (max-width: 360px) {
+  .header-title {
+    font-size: 18px; 
+  }
+
+  .create-job-profile-title {
+    font-size: 20px; 
+    margin-top: 40px;
+  }
+
+  .job-profile-form {
+    width: 90%; 
+    padding: 20px; 
+  }
+
+  .job-profile-form h2 {
+    font-size: 18px; 
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    font-size: 12px; 
+    padding: 8px; 
+  }
+
+  .btn-create, .btn-cancel {
+    font-size: 0.9rem;
+    padding: 8px 15px; 
+  }
 }

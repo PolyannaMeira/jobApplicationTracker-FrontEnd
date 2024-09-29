@@ -91,3 +91,21 @@ input[type="file"] {
 .btn-cancel:hover {
   background-color: #aaa;
 }
+
+@media (max-width: 360px) {
+  .update-job-profile-form {
+    width: 100%;
+    padding: 15px;
+  }
+
+  .form-actions {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .btn-save,
+  .btn-cancel {
+    width: 100%;
+    padding: 12px;
+  }
+}

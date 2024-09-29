@@ -92,3 +92,32 @@
 
 .login-input {
   padding-right: 2.5px;}
+
+  @media (max-width: 360px) {
+    .login-card {
+      width: 90%; 
+      padding: 15px; 
+    }
+  
+    .login-title {
+      font-size: 18px; 
+      margin-bottom: 15px;
+    }
+  
+    .login-input {
+      padding: 8px; 
+    }
+  
+    .login-button {
+      font-size: 0.9rem; 
+      padding: 8px; 
+    }
+  
+    .login-footer {
+      margin-top: 15px; 
+    }
+  
+    .password-toggle-icon {
+      right: 8px; 
+    }
+  }

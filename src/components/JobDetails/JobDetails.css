@@ -46,3 +46,28 @@ button {
 .delete {
   background-color: #dc3545;
 }
+
+@media (max-width: 360px) {
+  .job-details {
+    padding: 15px;
+    max-width: 100%;
+  }
+
+  .title {
+    font-size: 20px; 
+  }
+
+  button {
+    font-size: 14px; 
+    padding: 8px 12px; 
+  }
+
+  .update-back-delete-btn {
+    flex-direction: column; 
+  }
+
+  button {
+    margin-right: 0;
+    margin-bottom: 10px; 
+  }
+}

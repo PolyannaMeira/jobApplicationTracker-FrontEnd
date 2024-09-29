@@ -44,3 +44,24 @@ body {
 .favoriteIcon .heart-icon:hover {
   color: darkred;
 }
+
+@media (max-width: 360px) {
+  .jobItem {
+    padding: 8px;
+    border: 2px solid #fff;
+    height: auto;
+  }
+
+  .left-container, .right-container {
+    width: 100%;
+    align-items: center;
+  }
+
+  .left-container {
+    margin-bottom: 8px;
+  }
+
+  .heart-icon {
+    font-size: 20px;
+  }
+}

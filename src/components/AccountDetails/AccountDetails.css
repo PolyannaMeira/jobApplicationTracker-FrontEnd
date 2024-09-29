@@ -63,3 +63,18 @@
   border: 1px solid #000;
   border-radius: 4px;
 }
+
+@media (max-width: 600px) {
+  .account-details-container {
+    padding: 15px;
+  }
+
+  .form-group label {
+    font-size: 12px; 
+  }
+
+  .btn-update, .btn-cancel {
+    font-size: 14px; 
+  }
+}
+
