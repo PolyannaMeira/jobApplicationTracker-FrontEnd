@@ -33,6 +33,10 @@ const SignUp = () => {
     }
   };
 
+  const handleNavigateHome = () => {
+    navigate('/');
+  }
+
   return (
     <div className="signup-container">
       <form className="signup-form" onSubmit={handleSubmit}>
@@ -93,6 +97,9 @@ const SignUp = () => {
           />
         </div>
         <button type="submit">Register</button>
+        <button onClick={handleNavigateHome} className='navigate-button'>
+        Back to login
+      </button>
       </form>
     </div>
   );
