@@ -81,7 +81,19 @@
 .btn-update:active {
   transform: translateY(0);
 }
+.btn-change-password {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  margin-left: 10px;
+  cursor: pointer;
+}
 
+.btn-change-password:hover {
+  background-color: #0056b3;
+}
 .btn-cancel {
   background-color: transparent;
   color: #000;

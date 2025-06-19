@@ -15,7 +15,7 @@ const JobDetails = () => {
   const fetchJobDetails = async (jobId) => {
     try {
       const data = await Api.getMyJobsDetails(jobId);
-      setJob(data[0]);
+      setJob(data);
     } catch (error) {
       console.error(error);
       setError("Failed to fetch job details");
@@ -41,7 +41,7 @@ const JobDetails = () => {
   }
 
   const updateHandler = (jobId) => {
-    console.log(jobId)
+    
     navigate(`/update/${jobId}`, { replace: true });
   };
 
@@ -58,7 +58,10 @@ const JobDetails = () => {
     <div className="job-details">
       <h2 className="title">Job Details</h2>
       <div className="job-details-container">
-        <p><strong>Company Name:</strong> {job.companyName}</p>
+        {job && job.companyName && (
+  <p><strong>Company Name:</strong> {job.companyName}</p>
+)}
+
         <p><strong>Interview Date:</strong> {job.interviewDate}</p>
         <p><strong>Job Role:</strong> {job.jobRole}</p>
         <p><strong>Salary:</strong> {job.salary}</p>

@@ -30,7 +30,7 @@ const Search = () => {
   };
 
   const handleResultClick = (item) => {
-    console.log("Clicked on job with id:", item.id);
+    c
     navigate(`/myjob/${item.id}`);
   };
 

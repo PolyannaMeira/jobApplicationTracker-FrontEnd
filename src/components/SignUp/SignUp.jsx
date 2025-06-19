@@ -34,7 +34,9 @@ const SignUp = () => {
     await Api.registerUser(
       formData.email,
       formData.password,
-      formData.confirmPassword
+      formData.confirmPassword,
+      formData.firstName,
+      formData.lastName
     );
     alert("User registered successfully!");
     navigate('/');

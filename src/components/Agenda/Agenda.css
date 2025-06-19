@@ -1,20 +1,43 @@
-.calendar-container{
-    display: flex;
+.calendar-container {
+  display: flex;
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
+  padding: 20px 10px;
+  box-sizing: border-box;
 }
 
-.react-calendar{
-    margin: 40px auto 0 auto;
+.react-calendar {
+  margin: 40px auto 0 auto;
+  max-width: 100%;
+  width: 100%;
 }
 
-.react-calendar__navigation{
-    background-color: #555;
+.react-calendar__navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f0f0f0;
+  padding: 10px;
+  border-radius: 8px 8px 0 0;
 }
 
-.react-calendar__month-view__days__day{
-    color: black;
+.react-calendar__navigation button {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: #333;
+}
+
+.react-calendar__navigation button:disabled {
+  color: #ccc;
+  cursor: not-allowed;
+}
+
+
+.react-calendar__month-view__days__day {
+  color: black;
   text-align: center;
   padding: 15px;
   width: 40px;
@@ -25,92 +48,125 @@
   border-radius: 50%;
 }
 
-.react-calendar__month-view__days__day--neighboringMonth{
-    color: #aaa;
+.react-calendar__month-view__days__day--neighboringMonth {
+  color: #aaa;
 }
 
-.react-calendar__month-view__days__day--weekend{
-    color: red;
+.react-calendar__month-view__days__day--weekend {
+  color: red;
+}
+
+.current-day,
+.interview-day {
+  color: white !important;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .current-day {
-    background-color: blue !important;
-  color: white !important;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
+  background-color: blue !important;
+}
+
+.interview-day {
+  background-color: red !important;
+}
+
+.navigate-btn {
+  background-color: #28a745;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  margin: 20px auto 0 auto;
+  display: block;
+  width: 40%;
+  text-align: center;
+  font-size: 1rem;
+}
+
+.interview-list {
+  text-align: center;
+  margin-top: 40px;
+  width: 100%;
+}
+
+.interview-list h3 {
+  margin-bottom: 15px;
+  font-size: 1.5em;
+  color: #333;
+}
+
+.interview-list ul {
+  list-style-type: none;
+  padding: 0 10px;
+  margin: 0 auto;
+  max-width: 600px;
+}
+
+.interview-list li {
+  background-color: #FEF7FF;
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 10px;
+  font-size: 1.1em;
+  color: #555;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  }
-  
-  .interview-day {
-    background-color: red !important;
-  color: white !important;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-wrap: wrap;
+}
+
+.interview-list li .company-name {
+  font-weight: bold;
+  flex: 1 1 100%;
+  text-align: left;
+}
+
+/* Medium devices */
+@media (max-width: 768px) {
+  .react-calendar__month-view__days__day {
+    padding: 10px;
+    width: 30px;
+    height: 30px;
   }
 
-  .navigate-btn{
-    background-color: #28a745;
-    width: 40%;
-    margin-left: 50%;
-  }
-
-  .interview-list {
-    text-align: center;
-    margin-top: 50px;
-  }
-
-  .interview-list h3 {
-    margin-bottom: 10px;
-    font-size: 1.5em;
-    color: #333;
-  }
-
-  .interview-list ul {
-    list-style-type: none;
-    padding: 0;
+  .navigate-btn {
+    width: 80%;
   }
 
   .interview-list li {
-    background-color: #FEF7FF;
-    border-radius: 8px;
-    padding: 10px;
-    margin-bottom: 10px;
-    font-size: 1.1em;
-    color: #555;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    font-size: 1em;
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   .interview-list li .company-name {
-    font-weight: bold;
+    margin-bottom: 5px;
+  }
+}
+
+/* Small devices */
+@media (max-width: 360px) {
+  .react-calendar__month-view__days__day {
+    padding: 6px;
+    width: 26px;
+    height: 26px;
   }
 
-  @media (max-width: 768px) {
-    .react-calendar {
-      width: 90%;
-    }
-  
-    .react-calendar__month-view__days__day {
-      padding: 10px;
-      width: 30px;
-      height: 30px;
-    }
-  
-    .navigate-btn {
-      width: 80%;
-      margin-left: 10%;
-    }
-  
-    .interview-list li {
-      font-size: 1em;
-    }
+  .navigate-btn {
+    width: 100%;
+    font-size: 0.9rem;
   }
-  
+
+  .interview-list h3 {
+    font-size: 1.2em;
+  }
+
+  .interview-list li {
+    font-size: 0.95em;
+  }
+}

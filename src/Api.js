@@ -12,7 +12,7 @@ const getAuthHeaders = () => {
 const Api = {
   // 🔐 LOGIN
   getLogin: async (email, password) => {
-    console.log("Sending login with:", email, password);
+    
 
     const response = await fetch(url + 'users/login', {
       method: 'POST',
@@ -27,13 +27,13 @@ const Api = {
     return data;
   },
   
-  registerUser: async (email, password, confirmPassword) => {
+  registerUser: async (email, password, confirmPassword, firstName, lastName) => {
   const response = await fetch(url + "users/register", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ email, password, confirmPassword }),
+    body: JSON.stringify({ email, password, confirmPassword, firstName, lastName }),
   });
 
   const data = await response.json();
@@ -44,6 +44,51 @@ const Api = {
 
   return data;
 },
+
+updateUserDetails: async (formData) => {
+  const token = localStorage.getItem("token");
+
+  const response = await fetch(url + "users/update", {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(formData),
+  });
+
+  return response.json();
+}
+,
+
+getUserProfile: async () => {
+  const token = localStorage.getItem("token");
+
+  const response = await fetch(url+ "users/profile", {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  if (!response.ok) {
+    throw new Error("Failed to fetch user profile");
+  }
+
+  return response.json();
+},
+changePassword: async (currentPassword, newPassword, confirmPassword) => {
+  const response = await fetch(url+ "users/change-password", {
+    method: "PUT",
+    headers: getAuthHeaders(),
+    body: JSON.stringify({ currentPassword, newPassword, confirmPassword }),
+  });
+
+  const data = await response.json();
+  if (!response.ok) throw new Error(data.message ||"Error changing password. ");
+  return data;
+},
+
 
   // 🔐 GET all jobs (only for logged-in user)
   getMyJobsList: async () => {
@@ -58,7 +103,7 @@ const Api = {
 
   // 🔐 GET job details
   getMyJobsDetails: async (id) => {
-    const response = await fetch(url + `job/${id}`, {
+    const response = await fetch(url + `jobs/job/${id}`, {
       headers: getAuthHeaders(),
     });
 
@@ -82,7 +127,7 @@ const Api = {
 
   // 🔐 UPDATE job
   updateJob: async (id, jobData) => {
-    const response = await fetch(url + `job/${id}`, {
+    const response = await fetch(url + `jobs/job/${id}`, {
       method: 'PUT',
       headers: getAuthHeaders(),
       body: JSON.stringify(jobData),
