@@ -26,6 +26,7 @@
 /* Input fields */
 .form-group {
   margin-bottom: 15px;
+  position: relative;
 }
 
 .form-group label {
@@ -42,6 +43,18 @@
   border-radius: 5px;
   border: 1px solid #ccc;
   box-sizing: border-box;
+}
+.password-toggle-icon {
+  position: absolute;
+  right: 10px;
+  top: 70%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #007BFF; 
+}
+
+.password-toggle-icon:hover {
+  color: #0056b3; 
 }
 
 /* Register button */

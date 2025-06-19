@@ -1,8 +1,7 @@
 import  { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom'; 
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
-
-
+import Api from '../../Api/';
 import './Login.css'; 
 
 const Login = () => {
@@ -13,18 +12,18 @@ const Login = () => {
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
-    e.preventDefault();
-    if (email === "user@example.com" && password === "password123") {
-        
-      navigate('/myjobs');
-    } else {
-      
-      alert("Email ou password wrong");
-    }
-  };
+  e.preventDefault();
+  try {
+    const { token } = await Api.getLogin(email, password);
+    localStorage.setItem('token', token);
+    navigate('/myjobs');
+  } catch (err) {
+    alert(err.message);
+  }
+};
   
   const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword); // Alterna entre mostrar e esconder a senha
+    setShowPassword(!showPassword); 
   };
   
     
@@ -54,7 +53,7 @@ const Login = () => {
               onChange={(e) => setPassword(e.target.value)}
               className="login-input"
             />
-            <span onClick={togglePasswordVisibility} className="password-toggle-icon">
+            <span onClick={togglePasswordVisibility} className="password-toggle-icon-login">
               {showPassword ? <FaEyeSlash /> : <FaEye />} 
             </span>
             </div>
