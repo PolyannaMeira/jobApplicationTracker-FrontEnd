@@ -1,3 +1,5 @@
+/* AccountDetails.css - Versão Responsiva */
+
 .account-details-container {
   max-width: 400px;
   margin: 0 auto;
@@ -11,6 +13,7 @@
   text-align: center;
   margin-bottom: 20px;
   font-size: 24px;
+  color: #333;
 }
 
 .account-details-form {
@@ -27,6 +30,7 @@
   margin-bottom: 5px;
   font-size: 14px;
   font-weight: bold;
+  color: #555;
 }
 
 .form-group input {
@@ -35,12 +39,21 @@
   font-size: 16px;
   border: 1px solid #ccc;
   border-radius: 4px;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #000;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
 }
 
 .form-buttons {
   display: flex;
   justify-content: space-between;
   margin-top: 20px;
+  gap: 10px;
 }
 
 .btn-update,
@@ -49,6 +62,9 @@
   font-size: 16px;
   border: none;
   cursor: pointer;
+  flex: 1;
+  transition: all 0.3s ease;
+  font-weight: 500;
 }
 
 .btn-update {
@@ -57,6 +73,27 @@
   border-radius: 4px;
 }
 
+.btn-update:hover {
+  background-color: #333;
+  transform: translateY(-1px);
+}
+
+.btn-update:active {
+  transform: translateY(0);
+}
+.btn-change-password {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.btn-change-password:hover {
+  background-color: #0056b3;
+}
 .btn-cancel {
   background-color: transparent;
   color: #000;
@@ -64,17 +101,193 @@
   border-radius: 4px;
 }
 
+.btn-cancel:hover {
+  background-color: #f5f5f5;
+  transform: translateY(-1px);
+}
+
+.btn-cancel:active {
+  transform: translateY(0);
+}
+
+/* Mobile (até 600px) */
 @media (max-width: 600px) {
   .account-details-container {
     padding: 15px;
+    margin: 10px;
+    max-width: calc(100% - 20px);
+    border-radius: 6px;
+  }
+
+  .account-details-container h2 {
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+
+  .form-group {
+    margin-bottom: 12px;
   }
 
   .form-group label {
-    font-size: 12px; 
+    font-size: 12px;
+    margin-bottom: 4px;
   }
 
-  .btn-update, .btn-cancel {
-    font-size: 14px; 
+  .form-group input {
+    padding: 8px;
+    font-size: 14px;
   }
+
+  .form-buttons {
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 15px;
+  }
+
+  .btn-update,
+  .btn-cancel {
+    font-size: 14px;
+    padding: 12px;
+    width: 100%;
+  }
+}
+
+/* Tablet (601px a 1024px) */
+@media (min-width: 601px) and (max-width: 1024px) {
+  .account-details-container {
+    max-width: 500px;
+    padding: 25px;
+    border-radius: 10px;
+  }
+
+  .account-details-container h2 {
+    font-size: 26px;
+    margin-bottom: 25px;
+  }
+
+  .form-group {
+    margin-bottom: 18px;
+  }
+
+  .form-group label {
+    font-size: 15px;
+    margin-bottom: 6px;
+  }
+
+  .form-group input {
+    padding: 12px;
+    font-size: 16px;
+  }
+
+  .form-buttons {
+    margin-top: 25px;
+    gap: 15px;
+  }
+
+  .btn-update,
+  .btn-cancel {
+    padding: 12px 25px;
+    font-size: 16px;
+  }
+}
+
+/* Desktop (1025px a 1439px) */
+@media (min-width: 1025px) and (max-width: 1439px) {
+  .account-details-container {
+    max-width: 600px;
+    padding: 30px;
+    border-radius: 12px;
+  }
+
+  .account-details-container h2 {
+    font-size: 28px;
+    margin-bottom: 30px;
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+  }
+
+  .form-group label {
+    font-size: 16px;
+    margin-bottom: 8px;
+  }
+
+  .form-group input {
+    padding: 14px;
+    font-size: 16px;
+  }
+
+  .form-buttons {
+    margin-top: 30px;
+    gap: 20px;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .btn-update,
+  .btn-cancel {
+    padding: 14px 30px;
+    font-size: 16px;
+    min-width: 120px;
+  }
+}
+
+/* Extra Large Desktop (1440px ou mais) */
+@media (min-width: 1440px) {
+  .account-details-container {
+    max-width: 700px;
+    padding: 40px;
+    border-radius: 16px;
+  }
+
+  .account-details-container h2 {
+    font-size: 30px;
+    margin-bottom: 35px;
+  }
+
+  .form-group {
+    margin-bottom: 25px;
+  }
+
+  .form-group label {
+    font-size: 17px;
+    margin-bottom: 10px;
+  }
+
+  .form-group input {
+    padding: 16px;
+    font-size: 17px;
+  }
+
+  .form-buttons {
+    margin-top: 35px;
+    gap: 25px;
+    max-width: 450px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .btn-update,
+  .btn-cancel {
+    padding: 16px 35px;
+    font-size: 17px;
+    min-width: 140px;
+  }
+}
+
+/* Estados de loading/disabled (opcional) */
+.btn-update:disabled,
+.btn-cancel:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-update:disabled:hover,
+.btn-cancel:disabled:hover {
+  transform: none;
+  background-color: initial;
 }
 

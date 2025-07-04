@@ -20,30 +20,30 @@ const UpdateJobProfileForm = () => {
 
   const [loading, setLoading] = useState(true);
 
-  // Fetch job details from the API
-  const fetchJobDetails = async () => {
-    try {
-      const data = await api.getMyJobsDetails(id);
-      const jobDetails = data[0];
-      setJobData({
-        companyName: jobDetails.companyName || "",
-        jobRole: jobDetails.jobRole || "",
-        salary: jobDetails.salary || "",
-        jobUrl: jobDetails.jobUrl || "",
-        interviewDate: jobDetails.interviewDate || "",
-        location: jobDetails.location || "",
-        status: jobDetails.status || "",
-        attachment: null,
-        notes: jobDetails.notes || "",
-      });
-      setLoading(false);
-    } catch (error) {
-      console.error("Error fetching job details:", error);
-      setLoading(false);
-    }
-  };
-
   useEffect(() => {
+    // Fetch job details from the API
+    const fetchJobDetails = async () => {
+      try {
+        const data = await api.getMyJobsDetails(id);
+        const jobDetails = data;
+        setJobData({
+          companyName: jobDetails.companyName || "",
+          jobRole: jobDetails.jobRole || "",
+          salary: jobDetails.salary || "",
+          jobUrl: jobDetails.jobUrl || "",
+          interviewDate: jobDetails.interviewDate || "",
+          location: jobDetails.location || "",
+          status: jobDetails.status || "",
+          attachment: null,
+          notes: jobDetails.notes || "",
+        });
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching job details:", error);
+        setLoading(false);
+      }
+    };
+
     fetchJobDetails();
   }, [id]);
 

@@ -12,6 +12,7 @@ import Login from "./components/Login/Login.jsx";
 import SignUp from "./components/SignUp/SignUp.jsx";
 import Navbar from "./components/NavBar/NavBar.jsx";
 import Agenda from "./components/Agenda/Agenda.jsx";
+import ChangePassword from "./components/ChangePassword/ChangePassword.jsx";
 
 const router = createBrowserRouter([
   { path: "/", element: <Login /> },
@@ -31,6 +32,8 @@ const router = createBrowserRouter([
       { path: "JobProfileForm", element: <JobProfileForm /> },
       { path: "update/:id", element: <UpdateJobProfileForm /> },
       { path: "agenda", element: <Agenda /> },
+      { path: "/change-password", element:<ChangePassword />},
+
     ],
   },
   { path: "/signup", element: <SignUp /> },

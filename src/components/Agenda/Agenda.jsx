@@ -51,6 +51,7 @@ const Agenda = () => {
 
   return (
     <div className='calendar-container'>
+      <h1>Agenda</h1>
         <Calendar
         onChange={setValue}
         value={value}

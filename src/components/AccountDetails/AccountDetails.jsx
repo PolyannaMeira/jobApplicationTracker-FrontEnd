@@ -1,73 +1,85 @@
-import { useState } from "react";
+
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import API from "../../Api";
 import "./AccountDetails.css";
 
 const AccountDetails = () => {
-  
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
     email: "",
-    password: ""
+    password: "",
   });
 
-  const navigate = useNavigate(); // Hook for navigation
+  const navigate = useNavigate();
+  
+   useEffect(() => {
+  const fetchUserProfile = async () => {
+    try {
+      const user = await API.getUserProfile();
+      setFormData({
+        firstName: user.firstName || "",
+        lastName: user.lastName || "",
+        email: user.email || "",
+        password: "", 
+      });
+    } catch (err) {
+      console.error("Error fetching user profile:", err);
+    }
+  };
+
+  fetchUserProfile();
+}, []);
+
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  
-  const handleUpdate = (e) => {
-    e.preventDefault();
-    console.log("Updated Account Details:", formData);
-    
-    /*try {
-        const response = await fetch(`http://localhost:5000/api/account-details/${userId}`, {
-          method: 'PUT', 
-          headers: {
-            'Content-Type': 'application/json', 
-          },
-          body: JSON.stringify(formData), 
-        });
-    
-        if (response.ok) {
-          const data = await response.json();
-          console.log('Account details updated:', data);
-          
-          navigate("/myjobs");
-        } else {
-          console.error('Failed to update account details');
-        }
-      } catch (error) {
-        console.error('An error occurred while updating account details:', error);
-      }
-    };*/
-    navigate("/myjobs"); 
-  };    
-  
+  const handleUpdate = async (e) => {
+  e.preventDefault();
 
-  // Função de cancelamento
+  try {
+    const response = await API.updateUserDetails(formData);
+
+    
+    if (response && response.success) {
+      console.log("Updated:", response);
+      navigate("/myjobs");
+    } else {
+      alert("Failed to update account details");
+    }
+  } catch (error) {
+    console.error("Erro ao atualizar:", error);
+    alert("Erro ao atualizar os dados");
+  }
+};
+
   const handleCancel = () => {
     setFormData({
       firstName: "",
       lastName: "",
       email: "",
-      password: ""
+      password: "",
     });
     navigate("/myjobs");
   };
 
+  const handleChangePassword = () => {
+    navigate("/change-password");
+  };
+
+ 
+
   return (
     <div className="account-details-container">
-      
       <h2>Account Details</h2>
       <form className="account-details-form" onSubmit={handleUpdate}>
         <div className="form-group">
           <label htmlFor="firstName">First Name</label>
           <input
-            type="text"
             id="firstName"
             name="firstName"
             value={formData.firstName}
@@ -79,7 +91,6 @@ const AccountDetails = () => {
         <div className="form-group">
           <label htmlFor="lastName">Last Name</label>
           <input
-            type="text"
             id="lastName"
             name="lastName"
             value={formData.lastName}
@@ -114,7 +125,10 @@ const AccountDetails = () => {
 
         <div className="form-buttons">
           <button type="submit" className="btn-update">Update</button>
-          <button type="button" className="btn-cancel" onClick={handleCancel}>Cancel</button>
+          <button type="button" className="btn-change-password" onClick={handleChangePassword}>Change Password</button>
+          <button type="button" className="btn-cancel" onClick={handleCancel}>
+            Cancel
+          </button>
         </div>
       </form>
     </div>
