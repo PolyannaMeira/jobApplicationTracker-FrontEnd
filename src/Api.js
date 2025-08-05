@@ -1,4 +1,4 @@
-const url = import.meta.env.VITE_APP_API_URL;
+const url = import.meta.env.VITE_APP_API_URL || 'http://localhost:5000/';
 
 const getAuthHeaders = () => {
   const token = localStorage.getItem('token');
