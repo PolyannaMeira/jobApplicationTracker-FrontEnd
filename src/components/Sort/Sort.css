@@ -4,8 +4,11 @@
       float: left;
       justify-content: center;
       width: 50%;
-      margin: 0 0 ;
+      margin: 0 0;
+      
     }
+
+    
 
     .sort-button {
       padding: 12px 20px;
@@ -85,3 +88,4 @@
         width: 100%;
       }
     }
+    
